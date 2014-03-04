@@ -1,4 +1,4 @@
-; The URL of your blog. Include the http or https.
+﻿; The URL of your blog. Include the http or https.
 site.url = ""
 
 ; Blog info
@@ -13,9 +13,9 @@ social.facebook = "https://www.facebook.com"
 social.google = "https://plus.google.com"
 social.tumblr = "http://www.tumblr.com"
 
-; Custom menu link. 
+; Custom menu link.
 ; See example below:
-; "Google->http://www.google.com|Wikipedia->http://www.wikipedia.org". 
+; "Google->http://www.google.com|Wikipedia->http://www.wikipedia.org".
 blog.menu = ""
 
 ; Breadcrumb home text. Useful when installed on subfolder.
