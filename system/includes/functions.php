@@ -583,7 +583,7 @@ EOF;
 		<style>ul.archivegroup{padding:0;margin:0;}.archivegroup .expanded ul{display:block;}.archivegroup .collapsed ul{display:none;}.archivegroup li.expanded,.archivegroup li.collapsed{list-style:none;}
 		</style>
 EOF;
-		echo '<h3>Archive</h3>';
+		echo '<h3>Archives</h3>';
 		$i = 0;
 		$len = count($by_year);
 		foreach ($by_year as $year => $months){
