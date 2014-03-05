@@ -21,9 +21,9 @@
 				<span itemprop="articleSection"><?php echo $p->tag ?></span> par
 				<span itemprop="author"><a href="<?php echo $p->authorurl ?>"><?php echo $p->author ?></a></span>
 				<?php
-					if (disqus_count()) {?> - <span><a href="<?php echo $p->url?>#disqus_thread">Commentaires</a></span>
+					if (disqus_count()) {?> - <span><a href="<?php echo $p->url?>#disqus_thread">Commentaire(s)</a></span>
 				<?php } elseif (facebook()){ ?> -
-					<a href="<?php echo $p->url ?>#comments"><span><fb:comments-count href=<?php echo $p->url ?>></fb:comments-count> Commentaires</span></a>
+					<a href="<?php echo $p->url ?>#comments"><span><fb:comments-count href=<?php echo $p->url ?>></fb:comments-count> Commentaire(s)</span></a>
 				<?php } ?>
 			</div>
 			<div class="teaser-body" itemprop="articleBody">
