@@ -1,1 +1,1 @@
-<h1>No posts found!</h1>
+<h1>Aucun billet n'a été trouvé !</h1>

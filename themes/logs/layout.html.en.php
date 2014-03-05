@@ -42,11 +42,11 @@
 				</section>
 				<aside id="sidebar">
 					<div class="about">
-						<h3>À propos</h3>
+						<h3>About</h3>
 						<p><?php echo blog_description() ?></p>
 					</div>
 					<div class="social">
-						<h3>Me suivre</h3>
+						<h3>Follow</h3>
 						<?php echo social() ?>
 					</div>
 					<div class="archive">
