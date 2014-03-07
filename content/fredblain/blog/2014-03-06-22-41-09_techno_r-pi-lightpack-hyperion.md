@@ -16,7 +16,7 @@ Car ce qui nous intéresse ici, c'est Hyperion !
 Hyperion
 ======
 
-[Hyperion][6] est une implémentation open source de la technologie Ambilight qui permet d'interpréter le flux vidéo d'une R-Pi fonctionnant sous Raspbmc.
+[Hyperion][6] est une implémentation open source de la technologie Ambilight, qui permet d'interpréter le flux vidéo d'une R-Pi fonctionnant sous Raspbmc.
 
 J'ai écris "une" implémentation parce qu'il en existe en effet plusieurs, la plus connue/utilisée étant [Boblight][7].
 Autant le dire de suite.. bien que recommandée par le projet Lightpack, cette dernière n'a jamais fonctionné chez moi. Pour ce qui est des autres, je ne les connais pas. 
@@ -34,7 +34,7 @@ Jetons un œil aux revendications (les plus intéressantes) de ce dernier : (lis
 
 Sur ce dernier point, je ne peux ni confirmer ni infirmer ces dires puisque je n'ai jamais pu faire la comparaison..
 
-Quoiqu'il en soit j'étais convaincu et j'ai donc naturellement suivi cet [autre tutoriel][10] d'Andrew  P. dédié à l'installation d'Hyperion sur R-Pi.
+Quoiqu'il en soit j'étais convaincu et j'ai donc naturellement suivi ce [tutoriel][10] pour l'installation d'Hyperion sur R-Pi.
 Je n'ai cette fois eu aucun problème.
 
 ### Configuration d'Hyperion ###
@@ -43,8 +43,7 @@ On vient de le voir, Hyperion dispose d'un outil dédié permettant de générer
 
 ![Copie d'écran d'HyperCon, l'outil de configuration d'Hyperion][12]
 
-Codé en Java, il fait bien son boulot et vous enlève une sacrée épine du pied..
-Andrew P. propose une [présentation détaillée][13] des termes technique de cette interface assez simple à prendre en main.
+Codé en Java, il fait bien son boulot et vous enlève une sacrée épine du pied.. Et bien que son interface soit assez basique et accessible, une [aide à la configuration][13] avec un tour d'horizon des termes techniques peut vous être des plus utiles !
 
 **/!\ Attention...**  
 À noter toutefois que lorsque vous commencerez à utiliser HyperCon, veillez à bien connaitre l'ordre de vos leds. Ce point peut vous paraître trivial, mais vous seriez surpris de voir que les choses ne sont pas si évidentes... ce fut le cas pour moi.  
