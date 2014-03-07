@@ -1,7 +1,5 @@
 <!--t Raspberry-Pi + Lightpack = Hyperion ! t-->
 
-***/!\ Brouillon en cours de rédaction***
-
 Le voilà, le premier billet de ce que j'appellerai un "retour d'expérience (!)", et il est consacré au couplage d'une Raspberry-Pi avec un kit ambilight de type "Lightpack".
 
 ### Raspberry-Pi ###
@@ -39,7 +37,8 @@ Je n’ai cette fois eu aucun problème.
 
 ### Configuration d’Hyperion ###
 
-On vient de le voir, Hyperion dispose d’un outil dédié permettant de générer un fichier de configuration : [HyperCon][11].
+On vient de le voir, Hyperion dispose d’un outil dédié : [HyperCon][11], permettant de générer un fichier de configuration adapté à votre installation.
+En voici une capture d'écran :
 
 ![Copie d’écran d’HyperCon, l’outil de configuration d’Hyperion][12]
 
@@ -51,12 +50,11 @@ Codé en Java, il fait bien son boulot et vous enlève une sacrée épine du pie
 Pour ce faire, je vous conseille de procéder de façon incrémentale à l’ajout des leds dans votre configuration. De cette manière, vous saurez laquelle est la 1ère, la 2nde, etc.  
 Chaque fois que vous rajouterez une led à votre configuration, il vous faudra arrêter le service *hyperion* : `initctl stop hyperion`, copier ensuite votre configuration dans /etc : `sudo cp *votre-fichier-config.json*  /etc/hyperion.config.json`, puis redémarrer le service : `initctl start hyperion`
 
-Une fois que ce travail fastidieux, mais ô combien important sera terminé, il vous restera ensuite à affiner votre colorimétrie pour garantir un éclairage fidèle de vos leds. Là encore, Andrew P. a pensé à vous en proposant des vidéos conçues pour vous aider dans cette tâche.  
-
+Une fois que ce travail fastidieux, mais ô combien important sera terminé, il vous restera ensuite à affiner votre colorimétrie pour garantir un éclairage fidèle de vos leds. Là encore, Andrew P. a pensé à vous en proposant des vidéos dans la partie 5 "[Tuning the Colours][14]" de son tutoriel conçues pour vous aider dans cette tâche.  
 Personnellement, ma configuration d’Hyperion ne tient compte d’aucune optimisation, bien que pour les noirs notamment ce ne serait pas du luxe... ça marche très bien sans.
 
 J’espère vous avoir donné les clés pour utiliser Hyperion chez vous si vous disposez d’une R-pi et d’un kit ambilight.
-Et si vous voulez y jeter un oeil, mon fichier de configuration pour une installation d’une 10-aine de leds est disponible sur mon [Github][14].
+Et si vous voulez y jeter un oeil, mon fichier de configuration pour une installation d’une 10-aine de leds est disponible sur mon [Github][15].
 
 
   [1]: http://www.raspberrypi.org/
@@ -72,4 +70,5 @@ Et si vous voulez y jeter un oeil, mon fichier de configuration pour une install
   [11]: https://raw.github.com/tvdzwan/hypercon/master/deploy/HyperCon.jar
   [12]: https://raw.github.com/wiki/tvdzwan/hyperion/hypercon_mainscreen_01.jpg
   [13]: https://github.com/tvdzwan/hyperion/wiki/Configuration
-  [14]: https://github.com/FredBlain/hyperion
+  [14]: http://ajpawelski.wordpress.com/how-to-raspberry-pi-raspbmc-hyperion-and-a-ws2801-strip-2/#part3
+  [15]: https://github.com/FredBlain/hyperion
