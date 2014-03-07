@@ -11,7 +11,7 @@ Voilà pour la petite histoire.
 
 ### Lightpack ###
 Si le mot [Lightpack][4] ne vous dit rien, alors je vous invite à lire mon [billet qui lui ait consacré][5] avant de poursuivre.
-Car ce qui nous intéresse ici, c’est Hyperion&nbsp;!
+Car ce qui nous intéresse ici, c’est Hyperion !
 
 Hyperion
 ======
@@ -23,13 +23,13 @@ Autant le dire de suite... bien que recommandée par le projet Lightpack, cette 
 Pour celles et ceux qui souhaiteraient tout de même tenter leur chance avec Boblight, voir le [tutoriel d’Andrew Pawelski][8].
 Celui-là même qui migra vers Hyperion et me le fit connaître.
 
-Alors, pourquoi lâcher Boblight (considérant qu’il fonctionne) au profit d’Hyperion me direz-vous&nbsp;?
-Jetons un œil aux revendications (les plus intéressantes) de ce dernier&nbsp;: (liste complète [ici][9] [en])
+Alors, pourquoi lâcher Boblight (considérant qu’il fonctionne) au profit d’Hyperion me direz-vous ?
+Jetons un œil aux revendications (les plus intéressantes) de ce dernier : (liste complète [ici][9] [en])
 
-- Faible charge CPU (inférieure à 2% pour une 50-aine de leds)&nbsp;;
-- Un utilitaire en ligne de commande dénommé `hyperion-remote` pour tester et aider à la configuration d’Hyperion&nbsp;;
-- HyperCon, un outil pour générer un fichier de configuration complet&nbsp;;
-- Détection des bandes noires&nbsp;;
+- Faible charge CPU (inférieure à 2% pour une 50-aine de leds) ;
+- Un utilitaire en ligne de commande dénommé `hyperion-remote` pour tester et aider à la configuration d’Hyperion ;
+- HyperCon, un outil pour générer un fichier de configuration complet ;
+- Détection des bandes noires ;
 - Serait 15 fois plus rapide que Boblight.
 
 Sur ce dernier point, je ne peux ni confirmer ni infirmer ces dires puisque je n’ai jamais pu faire la comparaison..
@@ -39,17 +39,17 @@ Je n’ai cette fois eu aucun problème.
 
 ### Configuration d’Hyperion ###
 
-On vient de le voir, Hyperion dispose d’un outil dédié permettant de générer un fichier de configuration&nbsp;: [HyperCon][11].
+On vient de le voir, Hyperion dispose d’un outil dédié permettant de générer un fichier de configuration : [HyperCon][11].
 
 ![Copie d’écran d’HyperCon, l’outil de configuration d’Hyperion][12]
 
-Codé en Java, il fait bien son boulot et vous enlève une sacrée épine du pied... Et bien que son interface soit assez basique et accessible, une [aide à la configuration][13] avec un tour d’horizon des termes techniques peut vous être des plus utiles&nbsp;!
+Codé en Java, il fait bien son boulot et vous enlève une sacrée épine du pied... Et bien que son interface soit assez basique et accessible, une [aide à la configuration][13] avec un tour d’horizon des termes techniques peut vous être des plus utiles !
 
 **Petit conseil…**
 
 À noter toutefois que lorsque vous commencerez à utiliser HyperCon, veillez à bien connaître l’ordre de vos leds. Ce point peut vous paraître trivial, mais vous seriez surpris de voir que les choses ne sont pas si évidentes... ce fut le cas pour moi.  
 Pour ce faire, je vous conseille de procéder de façon incrémentale à l’ajout des leds dans votre configuration. De cette manière, vous saurez laquelle est la 1ère, la 2nde, etc.  
-Chaque fois que vous rajouterez une led à votre configuration, il vous faudra arrêter le service *hyperion*&nbsp;: `initctl stop hyperion` copier votre configuration dans /etc&nbsp;: `sudo cp *votre-config-test.json*  /etc/hyperion.config.json` puis redémarrer le service&nbsp;: `initctl start hyperion`
+Chaque fois que vous rajouterez une led à votre configuration, il vous faudra arrêter le service *hyperion* : `initctl stop hyperion`, copier ensuite votre configuration dans /etc : `sudo cp *votre-fichier-config.json*  /etc/hyperion.config.json`, puis redémarrer le service : `initctl start hyperion`
 
 Une fois que ce travail fastidieux, mais ô combien important sera terminé, il vous restera ensuite à affiner votre colorimétrie pour garantir un éclairage fidèle de vos leds. Là encore, Andrew P. a pensé à vous en proposant des vidéos conçues pour vous aider dans cette tâche.  
 
