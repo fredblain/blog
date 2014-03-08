@@ -1,11 +1,7 @@
 <!--t Lightpack - un ambilight open source t-->
 
-***Brouillon en cours de rédaction.***
-
 Voilà un billet sur un projet que j'ai découvert alors qu'il n'était encore qu'à l'état de levée de fond sur Kickstarter.
 Il a depuis fait son petit bonhomme de chemin puisqu'il est aujourd'hui passé en production et est vendu à travers le monde. Ce projet, c'est **Lightpack** !
-
-*L'objectif ici n'est pas de rentrer dans les détails de ce projet, mais bien d'en faire l'introduction pour, peut-être, vous donner l'envie comme moi d'en posséder un.*
 
 ##Kickstarter##
 
@@ -18,12 +14,16 @@ Imaginons 2min que vous ayez l'idée du siècle, mais pas le financement pour la
 Soit un financement à 191% qui a permis aux porteurs du projet de revoir leurs ambitions à la hausse avec, par exemple, le développement d'une application de gestion sur périphériques mobiles.  
 On peut donc dire que la campagne de financement a plutôt bien marché pour ce projet... mais qu'en est-il au juste ?
 
+Voyons maintenant ce qu'est Lightpack.
+
 #Lightpack#
 
-Lightpack c'est un kit ambilight\* qui diffusera de la lumière autours de l'écran sur lequel il est fixé.
+[Lightpack][3], c'est un kit ambilight\* qui diffusera de la lumière autours de l'écran sur lequel il est fixé. Rien de plus, rien de moins !  
+Concrètement, voilà ce que ça donne : [Lightpack - ambient backlight for your displays][4] [en]
+
 Inspiré de la technologie mise au point par Philips, il fonctionnera avec votre PC, Mac ou encore, par exemple, la Raspeberry-Pi que vous utilisez comme media-center dans votre salon. Le graphisme suivant résume l'ensemble :
 
-![enter image description here][3]
+![enter image description here][5]
 
 ###-- un confort visuel###
 
@@ -31,40 +31,51 @@ L'intérêt principal de ce dispositif, présenté comme scientifiquement prouv�
 En théorie avec ce dispositif, vos yeux mettront env. 1min contre 5min auparavant pour s'adapter à une image sombre, et moins de 5sec pour passer d'une image sombre à une image lumineuse.
 De fait, vous fatiguez moins, et vous abîmez moins vos yeux.
 
-Et ça ne s'arrête pas là. L'extension de l'image par ce dispositif vous permet de mieux profiter de la diagonale de votre écran. Le principe est simple
+Et ça ne s’arrête pas là.
+L’extension de l’image que permet ce dispositif vous fait davantage profiter de la diagonale de votre écran.
+Le principe est simple : dû à une particularité anatomique dont je vous passe [les détails][6], notre zone de vision où l’image est nette, est petite et limitée, le reste étant flou.
+C’est alors que notre cerveau bosse à rendre l’ensemble (zone nette + floue) en une image globale, cohérente.
+L’extension d’image réalisée par Lightpack vous donnera alors l’impression d’une diagonale plus grande que ce qu’elle est réellement.
 
-Ces aspects scientifiques sont présentés plus en détails dans une [page dédiée][4] sur le site du projet.
+###-- un boîtier de contrôle, des leds et c’est tout###
 
-###-- un boîtier de contrôle, des leds et c'est tout###
+Pour $139 (env. 100€, frais de port inclus) ce kit ambilight se compose d’un boîtier de contrôle et d’un ensemble de 10 leds comme l’illustre l’image ci-dessous dont l’assemblage est des plus simples :
 
-Pour env. $120 (frais de port inclus) ce kit ambilight se compose d'un boîtier de contrôle et d'un ensemble de 10 leds comme l'illustre l'image ci-dessous dont l'assemblage est des plus simples.
+![enter image description here][7]
+\[[galerie d’images][8]\]
 
-![enter image description here][5]
-\[[galerie d'images][6]\]
+Disposez vos leds derrière votre écran selon la disposition que vous souhaitez : tout autour de l’écran comme sur l’illustration précédente, sur les côtés et le bord supérieur uniquement, ou bien seulement sur les côtés. C’est à vous de voir ce qui vous convient le mieux.
+Pour ce qui est du boîtier de contrôle, collez-le à l’arrière de votre écran, raccordez-le au secteur pour l’alimentation, et en USB à votre source. Et c’est tout. Vous avez terminé l’installation de votre kit, et ça vous a pris 15min à peine.  
+Pour pouvoir l’utiliser, il ne vous reste plus qu’à installer le logiciel Primastik compatible Windows, Mac OS et GNU/Linux. Voir [ici][9] pour une utilisation avec une Raspberry-Pi.
 
-Disposez vos leds derrière votre écran selon la disposition que vous souhaitez : tout autour de l'écran comme sur l'illustration précédente, sur les côté et le bord supérieur uniquement, ou bien seulement sur les côtés. C'est à vous de voir ce qui vous convient le mieux.
-Pour ce qui est du boitier de contrôle, coller-le à l'arrière de votre écran, raccordez-le au secteur pour l'alimentation, et en USB à votre source. Et c'est tout. Vous avez terminé l'installation de votre kit.  
-Pour pouvoir l'utiliser, il ne vous reste plus qu'à installer le logiciel Primastik compatible Windows, Mac OS et GNU/Linux. Voir [ici][7] pour une utilisation avec une Raspberry-Pi.
+**Note :** Lightpack se connecte en USB sur la source et non en HDMI compte tenu du fait qu’il aurait fallu payer une licence au consortium dont le coût était trop conséquent pour le projet. 
+Le principal inconvénient à cette alternative est que vous ne pouvez pas brancher votre kit directement sur votre TV, même si celle-ci dispose d’un port USB. Il est nécessaire que la source puisse faire tourner le logiciel de capture.
 
-**Note :** Lightpack se connecte en USB sur la source et non en HDMI compte-tenu du fait qu'il aurait fallu payer une licence au consortium dont le coût était trop conséquent pour le projet. 
-Le principal inconvénient à cette alternative est que vous ne pouvez pas brancher votre kit directement sur votre TV, même si celle-ci dispose d'un port USB. Il est nécessaire que la source puisse faire tourner le logiciel de capture.
+###-- un projet "146%" open source###
 
-###-- un projet "146%" open-source###
+Lightpack est un projet totalement open source. Tout, du circuit imprimé, des composants, les codes sources des logiciels et du firmware sont sous licence GPL. Les porteurs du projet vont jusqu’à revendiquer avoir conçu leur circuit imprimé pour faciliter le hacker amateur et encourager le Do-It-Yourself.
+Si vous êtes intéressé et souhaitez contribuer à ce projet, soulever une amélioration, proposer un nouveau plug-in ou plus simplement jeter un œil aux codes sources et autres spécifications techniques, toutes les informations sont sur le repo [Github officiel du projet][10] !
 
-Lightpack est un projet totalement open-source. Tout, du circuit imprimé, des composants, les codes sources des logiciels et du firmware sont sous licence GPL. Les porteurs du projet vont jusqu'à revendiquer avoir conçu leur circuit imprimé pour faciliter le hack amateur et encourager le Do-It-Yourself.
-Si vous êtes intéressé par contribuer à ce projet, proposer un nouveau plug-in ou plus simplement pour jeter un œil au code source et aux spécifications techniques, toutes les informations sont sur le repo [github officiel du projet][8] !
 
-TODO: conclusion..
+Voilà, si ce modeste billet vous a convaincu comme j’ai pu l’être de l’intérêt d’un tel dispositif (actuellement, j’en possède 2 !), [calculez combien il vous en faut][11] par rapport à la diagonale de votre écran, puis rendez-vous sur le [Lightpack store][12]. Votre kit vous sera expédié de Hong-Kong sous 1 à 3 jours ouvrés.
+Chaque kit dispose d’une [garantie][13] de 1 an.
+
+ENJOY IT!
 
 -----
-\* ambilight = "ambient lighting" = éclairage d'ambiance
+\* ambilight = "ambient lighting" = éclairage d’ambiance
 
 
   [1]: https://www.kickstarter.com/
   [2]: http://www.mymajorcompany.com/
-  [3]: http://lightpack.tv/images/howitworks.jpg
-  [4]: http://lightpack.tv/science
-  [5]: https://lh4.googleusercontent.com/-WWMdJXXrG7w/UWwVhpTrCbI/AAAAAAAAMeo/aXrsCSdkjW4/w985-h607-no/IMG_0234.jpg
-  [6]: https://plus.google.com/u/0/photos/+MikhailSannikov/albums/5867069291294378561
-  [7]: http://blog.fredblain.org//2014/03/r-pi-lightpack-hyperion
-  [8]: https://github.com/Atarity/Lightpack
+  [3]: http://lightpack.tv/
+  [4]: http://www.youtube.com/watch?v=KQWhYzBu5V8
+  [5]: http://lightpack.tv/images/howitworks.jpg
+  [6]: http://lightpack.tv/science
+  [7]: https://lh4.googleusercontent.com/-WWMdJXXrG7w/UWwVhpTrCbI/AAAAAAAAMeo/aXrsCSdkjW4/w985-h607-no/IMG_0234.jpg
+  [8]: https://plus.google.com/u/0/photos/+MikhailSannikov/albums/5867069291294378561
+  [9]: http://blog.fredblain.org//2014/03/r-pi-lightpack-hyperion
+  [10]: https://github.com/Atarity/Lightpack
+  [11]: http://lightpack.tv/faq#multipack
+  [12]: http://store.lightpack.tv/products/lightpack
+  [13]: http://lightpack.tv/warranty
