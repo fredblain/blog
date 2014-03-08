@@ -489,7 +489,7 @@ function get_related($tag) {
 	if($total >= 1) {
 
 		$i = 1;
-		echo '<div class="related"><h4>Related posts</h4><ul>';
+		echo '<div class="related"><h4>Sujets similaires :</h4><ul>';
 		foreach ($tmp as $post) {
 			echo '<li><a href="' . $post->url . '">' . $post->title . '</a></li>';
 			if ($i++ >= $perpage) break;
