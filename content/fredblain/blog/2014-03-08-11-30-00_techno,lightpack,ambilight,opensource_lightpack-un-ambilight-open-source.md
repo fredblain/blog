@@ -5,11 +5,11 @@ Il a depuis fait son petit bonhomme de chemin puisqu'il est aujourd'hui passé e
 
 ##Kickstarter##
 
-Si vous n'êtes pas familier de ce nom, sachez simplement que [Kickstarter][1] est aux projets technologiques, jeux, mode, etc. ce que [MyMajorCompany][2] est à la musique : une plateforme de financement particif.  
+Si vous n'êtes pas familier de ce nom, sachez simplement que [Kickstarter][1] est aux projets technologiques, jeux, mode, etc. ce que [MyMajorCompany][2] est à la musique : une plateforme de financement participatif.  
 Imaginons 2min que vous ayez l'idée du siècle, mais pas le financement pour la concrétiser. Soumettez votre projet sur la plateforme en détaillant ses différents aspects (budgétaires notamment...). Dès lors, un appel à financement est lancé pour une 60-aine de jours. S'il s'avère que votre proposition suscite les foules, alors vous vous retrouverez peut-être avec une dotation au-delà de ce que vous aviez prévu, vous permettant d'aller plus loin dans votre idée. C'est aussi ça Kickstarter, et c'est exactement ce qui s'est passé pour Lightpack :
 
 - 5,812 backers (=*partenaires financiers* en anglais)
-- $500,784 de levée de fonds pour un objectif de budget de $261,962
+- $500,784 de levé de fonds pour un objectif de budget de $261,962
 
 Soit un financement à 191% qui a permis aux porteurs du projet de revoir leurs ambitions à la hausse avec, par exemple, le développement d'une [application Android][3].
 On peut donc dire que la campagne de financement a plutôt bien marché pour ce projet... mais qu'en est-il au juste ?
@@ -18,7 +18,7 @@ Voyons maintenant ce qu'est Lightpack.
 
 #Lightpack#
 
-[Lightpack][4], c'est un kit ambilight\* qui diffusera de la lumière autours de l'écran sur lequel il est fixé. Rien de plus, rien de moins !  
+[Lightpack][4], c'est un kit ambilight\* qui diffusera de la lumière autour de l'écran sur lequel il est fixé. Rien de plus, rien de moins !  
 Concrètement, voilà ce que ça donne : [Lightpack - ambient backlight for your displays][5] [en]
 
 Inspiré de la technologie mise au point par Philips, il fonctionnera avec votre PC, Mac ou encore, par exemple, la Raspeberry-Pi que vous utilisez comme media-center dans votre salon. Le graphisme suivant résume l'ensemble :
@@ -46,12 +46,12 @@ Pour $139 (env. 100€, frais de port inclus) ce kit ambilight se compose d’un
 
 Disposez vos leds derrière votre écran selon la disposition que vous souhaitez : tout autour de l’écran comme sur l’illustration précédente, sur les côtés et le bord supérieur uniquement, ou bien seulement sur les côtés. C’est à vous de voir ce qui vous convient le mieux.
 Pour ce qui est du boîtier de contrôle, collez-le à l’arrière de votre écran, raccordez-le au secteur pour l’alimentation, et en USB à votre source. Et c’est tout. Vous avez terminé l’installation de votre kit, et ça vous a pris 15min à peine.  
-Pour pouvoir l’utiliser, il ne vous reste plus qu’à installer le logiciel de capture dénommé "[Prismatik][10]" compatible Windows, Mac OS et GNU/Linux. Voir [ici][11] pour une utilisation avec une Raspberry-Pi.
+Pour pouvoir l’utiliser, il ne vous reste plus qu’à installer le logiciel de capture dénommé « [Prismatik][10] » compatible Windows, Mac OS et GNU/Linux. Voir [ici][11] pour une utilisation avec une Raspberry-Pi.
 
 **Note :** Lightpack se connecte en USB sur la source et non en HDMI compte tenu du fait qu’il aurait fallu payer une licence au consortium dont le coût était trop conséquent pour le projet. 
 Le principal inconvénient à cette alternative est que vous ne pouvez pas brancher votre kit directement sur votre TV, même si celle-ci dispose d’un port USB. Il est nécessaire que la source puisse faire tourner le logiciel de capture.
 
-###-- un projet "146%" open source###
+###-- un projet « 146% » open source###
 
 Lightpack est un projet totalement open source. Tout, du circuit imprimé, des composants, les codes sources des logiciels et du firmware sont sous licence GPL. Les porteurs du projet vont jusqu’à revendiquer avoir conçu leur circuit imprimé pour faciliter le hacker amateur et encourager le Do-It-Yourself.
 Si vous êtes intéressé et souhaitez contribuer à ce projet, soulever une amélioration, proposer un nouveau plug-in ou plus simplement jeter un œil aux codes sources et autres spécifications techniques, toutes les informations sont sur le repo [Github officiel du projet][12] !
@@ -63,7 +63,7 @@ Chaque kit dispose d’une [garantie][15] de 1 an.
 ENJOY IT!
 
 -----
-\* ambilight = "ambient lighting" = éclairage d’ambiance
+\* ambilight = « ambient lighting » = éclairage d’ambiance
 
 
   [1]: https://www.kickstarter.com/
