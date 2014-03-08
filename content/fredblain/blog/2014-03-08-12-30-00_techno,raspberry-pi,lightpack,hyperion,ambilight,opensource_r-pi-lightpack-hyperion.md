@@ -57,18 +57,18 @@ Voilà, j’espère vous avoir donné les clés pour utiliser Hyperion chez vous
 Et si vous voulez y jeter un œil, mon fichier de configuration est disponible sur mon [Github][15].
 
 
-  [1] : http://www.raspberrypi.org/
-  [2] : http://www.raspberrypi.org/archives/6299
-  [3] : http://www.raspbmc.com/
-  [4] : http://lightpack.tv
-  [5] : http://blog.fredblain.org/2014/03/lightpack-un-ambilight-open-source
-  [6] : https://github.com/tvdzwan/hyperion/wiki
-  [7] : http://code.google.com/p/boblight/
-  [8] : http://ajpawelski.wordpress.com/how-to-raspberry-pi-raspbmc-and-a-lightpack/
-  [9] : https://github.com/tvdzwan/hyperion/wiki#wiki-introduction
-  [10] : https://github.com/tvdzwan/hyperion/wiki/Installation
-  [11] : https://raw.github.com/tvdzwan/hypercon/master/deploy/HyperCon.jar
-  [12] : https://raw.github.com/wiki/tvdzwan/hyperion/hypercon_mainscreen_01.jpg
-  [13] : https://github.com/tvdzwan/hyperion/wiki/Configuration
-  [14] : http://ajpawelski.wordpress.com/how-to-raspberry-pi-raspbmc-hyperion-and-a-ws2801-strip-2/#part3
-  [15] : https://github.com/FredBlain/hyperion
+  [1]: http://www.raspberrypi.org/
+  [2]: http://www.raspberrypi.org/archives/6299
+  [3]: http://www.raspbmc.com/
+  [4]: http://lightpack.tv
+  [5]: http://blog.fredblain.org/2014/03/lightpack-un-ambilight-open-source
+  [6]: https://github.com/tvdzwan/hyperion/wiki
+  [7]: http://code.google.com/p/boblight/
+  [8]: http://ajpawelski.wordpress.com/how-to-raspberry-pi-raspbmc-and-a-lightpack/
+  [9]: https://github.com/tvdzwan/hyperion/wiki#wiki-introduction
+  [10]: https://github.com/tvdzwan/hyperion/wiki/Installation
+  [11]: https://raw.github.com/tvdzwan/hypercon/master/deploy/HyperCon.jar
+  [12]: https://raw.github.com/wiki/tvdzwan/hyperion/hypercon_mainscreen_01.jpg
+  [13]: https://github.com/tvdzwan/hyperion/wiki/Configuration
+  [14]: http://ajpawelski.wordpress.com/how-to-raspberry-pi-raspbmc-hyperion-and-a-ws2801-strip-2/#part3
+  [15]: https://github.com/FredBlain/hyperion
