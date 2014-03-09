@@ -3,8 +3,8 @@
 Le voilà, mon premier billet « retour d’expérience », et il est consacré au couplage d’une Raspberry-Pi avec un kit ambilight de type « Lightpack ».
 
 ###-- Raspberry-Pi ###
-On ne présente plus la [Raspberry-Pi][1] [en], ou « R-Pi », qui a fêté ses 2 ans pour 2,5 millions d’exemplaires vendus il y a de cela quelques jours ([source][2] [en]).  
-Personnellement je possède le modèle B, que je fais tourner sous [Raspbmc][3] pour un media-center de salon associé à un périphérique de stockage réseau (en anglais *"Network Attached Storage - NAS"*). 
+On ne présente plus la [Raspberry-Pi][1] [en], ou « R-Pi », qui a fêté ses 2 ans pour 2,5 millions d’exemplaires vendus il y a de cela quelques jours ([source][2] [en]).
+Personnellement je possède le modèle B, que je fais tourner sous [Raspbmc][3] pour un media-center de salon associé à un périphérique de stockage réseau (en anglais *"Network Attached Storage - NAS"*).
 Voilà pour la petite histoire.
 
 ###-- Lightpack ###
@@ -17,7 +17,7 @@ Hyperion
 [Hyperion][6] est une implémentation open source pour capturer le flux vidéo d’une R-Pi fonctionnant sous Raspbmc.
 
 J’ai écrit « une » implémentation parce qu’il en existe en effet plusieurs, la plus connue/utilisée étant [Boblight][7].
-Autant le dire de suite... bien que recommandée par le projet Lightpack, cette dernière n’a jamais fonctionné chez moi. Pour ce qui est des autres, je ne les connais pas. 
+Autant le dire de suite... bien que recommandée par le projet Lightpack, cette dernière n’a jamais fonctionné chez moi. Pour ce qui est des autres, je ne les connais pas.
 Si vous souhaitez tout de même tenter votre chance avec Boblight, voir le [tutoriel d’Andrew Pawelski][8].
 À noter que c’est lui qui migra vers Hyperion et me le fit connaître.
 
@@ -45,10 +45,10 @@ Codé en Java, il fait bien son boulot et vous enlève une sacrée épine du pie
 
 **-- Attention, petit conseil…**
 
-À noter toutefois que lorsque vous commencerez à utiliser HyperCon, veillez à bien connaître l’ordre de vos leds. Ce point peut vous paraître trivial, mais vous seriez surpris de voir que les choses ne sont pas si évidentes... ce fut le cas pour moi.  
-Pour ce faire, je vous conseille de procéder de la façon suivante : ajouter vos leds une par une dans votre configuration. De cette manière, vous saurez laquelle est la 1ère, la 2nde, etc.  
+À noter toutefois que lorsque vous commencerez à utiliser HyperCon, veillez à bien connaître l’ordre de vos leds. Ce point peut vous paraître trivial, mais vous seriez surpris de voir que les choses ne sont pas si évidentes... ce fut le cas pour moi.
+Pour ce faire, je vous conseille de procéder de la façon suivante : ajouter vos leds une par une dans votre configuration. De cette manière, vous saurez laquelle est la 1ère, la 2nde, etc.
 Chaque fois que vous rajouterez une led à votre configuration, il vous faudra arrêter le service *hyperion* : `initctl stop hyperion`, copier ensuite votre configuration dans /etc : `sudo cp *votre-fichier-config.json*  /etc/hyperion.config.json`, puis redémarrer le service : `initctl start hyperion`.
-Une fois que ce travail fastidieux, mais ô combien important sera terminé, vous pourrez activer le service pour l’ensemble de vos leds. Si comme moi vos leds ne sont pas l’ordre, il vous suffit de refaire les branchements sur le boîtier de contrôle de sorte qu’elles le soient.
+Une fois que ce travail fastidieux, mais ô combien important sera terminé, vous pourrez activer le service pour l’ensemble de vos leds. Si comme moi vos leds ne sont pas dans l’ordre, il vous suffit de refaire les branchements sur le boîtier de contrôle de sorte qu’elles le soient.
 
 Pour finir, il est conseillé de bien calibrer vos leds (réglage des gamma, etc.) pour garantir un affichage fidèle des couleurs. Mais là encore, pour vous aider dans ce calibrage qui peut prendre plusieurs heures, Andrew P. a pensé à vous en proposant des sources vidéo que vous trouverez dans la partie 5 « Tuning the Colours » de son [tutoriel][14].
 Personnellement, je n’ai pas (encore ?) calibré mes couleurs, bien que pour les noirs notamment ce ne serait pas du luxe (affichage pourpre)... et ça marche déjà très bien.
