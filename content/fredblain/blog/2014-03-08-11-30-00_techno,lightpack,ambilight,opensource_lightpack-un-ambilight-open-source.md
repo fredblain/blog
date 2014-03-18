@@ -53,8 +53,8 @@ Le principal inconvénient à cette alternative est que vous ne pouvez pas branc
 
 ###-- un projet « 146% » open source###
 
-Lightpack est un projet totalement open source. Tout, du circuit imprimé, des composants, en passant par les codes sources des logiciels et du firmware est sous licence [GPL[12]. Les porteurs du projet vont jusqu’à revendiquer avoir conçu leur circuit imprimé pour faciliter le hacker amateur et encourager le Do-It-Yourself.
-Si vous êtes intéressé et souhaitez contribuer à ce projet, soulever une amélioration, proposer un nouveau plug-in ou plus simplement jeter un œil aux codes sources et autres spécifications techniques, toutes les informations sont sur le repo [Github officiel du projet][13] !
+Lightpack est un projet totalement open source. Tout, du circuit imprimé, des composants, en passant par les codes sources des logiciels et du firmware est sous licence [GPL][12]. Les porteurs du projet vont jusqu’à revendiquer avoir conçu leur circuit imprimé pour faciliter le hacker amateur et encourager le Do-It-Yourself.
+Si vous êtes intéressé et souhaitez contribuer à ce projet, soulever une amélioration, proposer un nouveau plug-in ou plus simplement jeter un œil aux codes sources et autres spécifications techniques, toutes les informations sont sur le repo [Github officiel][13] du projet !
 
 
 Voilà, si ce modeste billet vous a convaincu comme j’ai pu l’être de l’intérêt d’un tel dispositif (actuellement, j’en possède 2 !), [calculez combien il vous en faut][14] par rapport à la diagonale de votre écran, puis rendez-vous sur le [Lightpack store][15]. Votre kit vous sera expédié de Hong-Kong sous 1 à 3 jours ouvrés.
