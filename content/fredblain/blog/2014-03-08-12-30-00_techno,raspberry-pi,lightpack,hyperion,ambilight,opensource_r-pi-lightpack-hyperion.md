@@ -8,7 +8,7 @@ Personnellement je possède le modèle B, que je fais tourner sous [Raspbmc][3] 
 Voilà pour la petite histoire.
 
 ###-- Lightpack ###
-Si le mot [Lightpack][4] ne vous dit rien, alors je vous invite à lire mon [billet qui lui ait consacré][5] avant de poursuivre.
+Si le mot [Lightpack][4] ne vous dit rien, alors je vous invite à lire mon [billet qui lui est consacré][5] avant de poursuivre.
 Car ce qui nous intéresse ici, c’est **Hyperion** !
 
 Hyperion
