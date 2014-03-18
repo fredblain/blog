@@ -53,12 +53,12 @@ Le principal inconvénient à cette alternative est que vous ne pouvez pas branc
 
 ###-- un projet « 146% » open source###
 
-Lightpack est un projet totalement open source. Tout, du circuit imprimé, des composants, les codes sources des logiciels et du firmware sont sous licence GPL. Les porteurs du projet vont jusqu’à revendiquer avoir conçu leur circuit imprimé pour faciliter le hacker amateur et encourager le Do-It-Yourself.
-Si vous êtes intéressé et souhaitez contribuer à ce projet, soulever une amélioration, proposer un nouveau plug-in ou plus simplement jeter un œil aux codes sources et autres spécifications techniques, toutes les informations sont sur le repo [Github officiel du projet][12] !
+Lightpack est un projet totalement open source. Tout, du circuit imprimé, des composants, en passant par les codes sources des logiciels et du firmware est sous licence [GPL[12]. Les porteurs du projet vont jusqu’à revendiquer avoir conçu leur circuit imprimé pour faciliter le hacker amateur et encourager le Do-It-Yourself.
+Si vous êtes intéressé et souhaitez contribuer à ce projet, soulever une amélioration, proposer un nouveau plug-in ou plus simplement jeter un œil aux codes sources et autres spécifications techniques, toutes les informations sont sur le repo [Github officiel du projet][13] !
 
 
-Voilà, si ce modeste billet vous a convaincu comme j’ai pu l’être de l’intérêt d’un tel dispositif (actuellement, j’en possède 2 !), [calculez combien il vous en faut][13] par rapport à la diagonale de votre écran, puis rendez-vous sur le [Lightpack store][14]. Votre kit vous sera expédié de Hong-Kong sous 1 à 3 jours ouvrés.
-Chaque kit dispose d’une [garantie][15] de 1 an.
+Voilà, si ce modeste billet vous a convaincu comme j’ai pu l’être de l’intérêt d’un tel dispositif (actuellement, j’en possède 2 !), [calculez combien il vous en faut][14] par rapport à la diagonale de votre écran, puis rendez-vous sur le [Lightpack store][15]. Votre kit vous sera expédié de Hong-Kong sous 1 à 3 jours ouvrés.
+Chaque kit dispose d’une [garantie][16] de 1 an.
 
 ENJOY IT!
 
@@ -77,7 +77,8 @@ ENJOY IT!
   [9]: https://plus.google.com/u/0/photos/+MikhailSannikov/albums/5867069291294378561
   [10]: http://lightpack.tv/downloads
   [11]: http://blog.fredblain.org//2014/03/r-pi-lightpack-hyperion
-  [12]: https://github.com/Atarity/Lightpack
-  [13]: http://lightpack.tv/faq#multipack
-  [14]: http://store.lightpack.tv/products/lightpack
-  [15]: http://lightpack.tv/warranty
+  [12]: http://www.gnu.org/licenses/gpl.html
+  [13]: https://github.com/Atarity/Lightpack
+  [14]: http://lightpack.tv/faq#multipack
+  [15]: http://store.lightpack.tv/products/lightpack
+  [16]: http://lightpack.tv/warranty
