@@ -5,7 +5,7 @@ Il a depuis fait son petit bonhomme de chemin puisqu'il est aujourd'hui passé e
 
 ##Kickstarter##
 
-Si vous n'êtes pas familier de ce nom, sachez simplement que [Kickstarter][1] est aux projets technologiques, jeux, mode, etc. ce que [MyMajorCompany][2] est à la musique : une plateforme de financement participatif.  
+Si vous n'êtes pas familier de ce nom, sachez simplement que [Kickstarter][1] est aux projets technologiques, jeux, mode, etc. ce que [MyMajorCompany][2] est à la musique : une plateforme de financement participatif.
 Imaginons 2min que vous ayez l'idée du siècle, mais pas le financement pour la concrétiser. Soumettez votre projet sur la plateforme en détaillant ses différents aspects (budgétaires notamment...). Dès lors, un appel à financement est lancé pour une 60-aine de jours. S'il s'avère que votre proposition suscite les foules, alors vous vous retrouverez peut-être avec une dotation au-delà de ce que vous aviez prévu, vous permettant d'aller plus loin dans votre idée. C'est aussi ça Kickstarter, et c'est exactement ce qui s'est passé pour Lightpack :
 
 - 5,812 backers (=*partenaires financiers* en anglais)
@@ -18,7 +18,7 @@ Voyons maintenant ce qu'est Lightpack.
 
 #Lightpack#
 
-[Lightpack][4], c'est un kit ambilight\* qui diffusera de la lumière autour de l'écran sur lequel il est fixé. Rien de plus, rien de moins !  
+[Lightpack][4], c'est un kit ambilight\* qui diffusera de la lumière autour de l'écran sur lequel il est fixé. Rien de plus, rien de moins !
 Concrètement, voilà ce que ça donne : [Lightpack - ambient backlight for your displays][5] [en]
 
 Inspiré de la technologie mise au point par Philips, il fonctionnera avec votre PC, Mac ou encore, par exemple, la Raspeberry-Pi que vous utilisez comme media-center dans votre salon. Le graphisme suivant résume l'ensemble :
@@ -34,7 +34,7 @@ De fait, vous fatiguez moins, et vous abîmez moins vos yeux.
 Et ça ne s’arrête pas là.
 L’extension de l’image que permet ce dispositif vous fait davantage profiter de la diagonale de votre écran.
 Le principe est simple : dû à une particularité anatomique dont je vous passe [les détails][7], notre zone de vision où l’image est nette, est petite et limitée, le reste étant flou.
-C’est alors que notre cerveau bosse à rendre l’ensemble (zone nette + floue) en une image globale, cohérente.
+C’est alors que notre cerveau travaille à rendre l’ensemble (zone nette + floue) en une image globale, cohérente.
 L’extension d’image réalisée par Lightpack vous donnera alors l’impression d’une diagonale plus grande que ce qu’elle est réellement.
 
 ###-- un boîtier de contrôle, des leds et c’est tout###
@@ -45,10 +45,10 @@ Pour $139 (env. 100€, frais de port inclus) ce kit ambilight se compose d’un
 \[[galerie d’images][9]\]
 
 Disposez vos leds derrière votre écran selon la disposition que vous souhaitez : tout autour de l’écran comme sur l’illustration précédente, sur les côtés et le bord supérieur uniquement, ou bien seulement sur les côtés. C’est à vous de voir ce qui vous convient le mieux.
-Pour ce qui est du boîtier de contrôle, collez-le à l’arrière de votre écran, raccordez-le au secteur pour l’alimentation, et en USB à votre source. Et c’est tout. Vous avez terminé l’installation de votre kit, et ça vous a pris 15min à peine.  
+Pour ce qui est du boîtier de contrôle, collez-le à l’arrière de votre écran, raccordez-le au secteur pour l’alimentation, et en USB à votre source. Et c’est tout. Vous avez terminé l’installation de votre kit, et ça vous a pris 15min à peine.
 Pour pouvoir l’utiliser, il ne vous reste plus qu’à installer le logiciel de capture dénommé « [Prismatik][10] » compatible Windows, Mac OS et GNU/Linux. Voir [ici][11] pour une utilisation avec une Raspberry-Pi.
 
-**Note :** Lightpack se connecte en USB sur la source et non en HDMI compte tenu du fait qu’il aurait fallu payer une licence au consortium dont le coût était trop conséquent pour le projet. 
+**Note :** Lightpack se connecte en USB sur la source et non en HDMI compte tenu du fait qu’il aurait fallu payer une licence au consortium dont le coût était trop conséquent pour le projet.
 Le principal inconvénient à cette alternative est que vous ne pouvez pas brancher votre kit directement sur votre TV, même si celle-ci dispose d’un port USB. Il est nécessaire que la source puisse faire tourner le logiciel de capture.
 
 ###-- un projet « 146% » open source###
