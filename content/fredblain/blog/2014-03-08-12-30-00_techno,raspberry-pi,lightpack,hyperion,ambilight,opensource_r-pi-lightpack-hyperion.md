@@ -56,6 +56,8 @@ Personnellement, je n’ai pas (encore ?) calibré mes couleurs, bien que pour
 Voilà, j’espère vous avoir donné les clés pour utiliser Hyperion chez vous si vous disposez d’une R-pi et d’un kit ambilight.
 Et si vous voulez y jeter un œil, mon fichier de configuration est disponible sur mon [Github][15].
 
+**Edit** - Un tutoriel très complet sur l'installation et la configuration de votre kit ambilight avec Hyperion sur R-Pi est disponible [ici][16].
+
 
   [1]: http://www.raspberrypi.org/
   [2]: http://www.raspberrypi.org/archives/6299
@@ -72,3 +74,4 @@ Et si vous voulez y jeter un œil, mon fichier de configuration est disponible s
   [13]: https://github.com/tvdzwan/hyperion/wiki/Configuration
   [14]: http://ajpawelski.wordpress.com/how-to-raspberry-pi-raspbmc-hyperion-and-a-ws2801-strip-2/#part3
   [15]: https://github.com/FredBlain/hyperion
+  [16]: http://maison-et-domotique.com/books/lightpack-hyperion-raspberry-pi-ambilight-sur-votre-tv
