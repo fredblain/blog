@@ -1,7 +1,7 @@
 <?php
 
 // Change this to your timezone
-date_default_timezone_set('Asia/Jakarta');
+date_default_timezone_set('Europe/Paris');
 
 use \Michelf\MarkdownExtra;
 use \Suin\RSSWriter\Feed;

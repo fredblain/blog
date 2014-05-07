@@ -1,7 +1,7 @@
 <?php
 
 // Change this to your timezone
-date_default_timezone_set('Asia/Jakarta');
+date_default_timezone_set('Europe/Paris');
 
 use \Michelf\MarkdownExtra;
 use \Suin\RSSWriter\Feed;
@@ -27,7 +27,7 @@ function get_post_unsorted(){
 function get_post_sorted(){
 
 	static $tmp= array();
-	
+
 	static $_cache = array();
 
 	if(empty($_cache)){
@@ -35,21 +35,21 @@ function get_post_sorted(){
 		// Get the names of all the posts
 
 		$tmp = glob('content/*/blog/*.md', GLOB_NOSORT);
-		
+
 		if (is_array($tmp)) {
 			foreach($tmp as $file) {
 				$_cache[] = pathinfo($file);
 			}
 		}
-		
+
 	}
-	
+
 	usort($_cache, "sortfile");
-	
+
 	return $_cache;
 }
 
-// Get static page path. Unsorted. 
+// Get static page path. Unsorted.
 function get_static_pages(){
 
 	static $_cache = array();
@@ -65,7 +65,7 @@ function get_static_pages(){
 	return $_cache;
 }
 
-// Get author bio path. Unsorted. 
+// Get author bio path. Unsorted.
 function get_author_names(){
 
 	static $_cache = array();
@@ -81,7 +81,7 @@ function get_author_names(){
 	return $_cache;
 }
 
-// Get backup file. 
+// Get backup file.
 function get_zip_files(){
 
 	static $_cache = array();
@@ -107,70 +107,70 @@ function sortdate($a, $b) {
 	return $a->date == $b->date ? 0 : ( $a->date < $b->date ) ? 1 : -1;
 }
 
-// Return blog posts. 
+// Return blog posts.
 function get_posts($posts, $page = 1, $perpage = 0){
-		
+
 	if(empty($posts)) {
 		$posts = get_post_sorted();
 	}
-	
+
 	$tmp = array();
-	
+
 	// Extract a specific page with results
 	$posts = array_slice($posts, ($page-1) * $perpage, $perpage);
-	
+
 	foreach($posts as $index => $v){
 
 		$post = new stdClass;
-		
+
 		$filepath = $v['dirname'] . '/' . $v['basename'];
 
 		// Extract the date
 		$arr = explode('_', $filepath);
-		
+
 		// Replaced string
 		$replaced = substr($arr[0], 0,strrpos($arr[0], '/')) . '/';
-		
+
 		// Author string
 		$str = explode('/', $replaced);
 		$author = $str[count($str)-3];
-		
+
 		// The post author + author url
 		$post->author = $author;
 		$post->authorurl = site_url() . 'author/' .  $author;
-		
+
 		$dt = str_replace($replaced,'',$arr[0]);
 		$t = str_replace('-', '', $dt);
 		$time = new DateTime($t);
 		$timestamp= $time->format("Y-m-d H:i:s");
-		
+
 		// The post date
 		$post->date = strtotime($timestamp);
-		
+
 		// The archive per day
 		$post->archive = site_url(). 'archive/' . date('Y-m-d', $post->date) ;
 
 		// The post URL
 		$post->url = site_url().date('Y/m', $post->date).'/'.str_replace('.md','',$arr[2]);
-		
+
 		$tag = array();
 		$url = array();
 		$bc = array();
-		
+
 		$t = explode(',', $arr[1]);
 		foreach($t as $tt) {
 			$tag[] = array($tt, site_url(). 'tag/' . $tt);
 		}
-		
+
 		foreach($tag as $a) {
 			$url[] = '<span><a href="' .  $a[1] . '">'. $a[0] .'</a></span>';
 			$bc[] = '<span typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="' .  $a[1] . '">'. $a[0] .'</a></span>';
 		}
-		
+
 		$post->tag = implode(', ', $url);
-		
+
 		$post->tagb = implode(' » ', $bc);
-		
+
 		$post->file = $filepath;
 
 		// Get the contents and convert it to HTML
@@ -180,7 +180,7 @@ function get_posts($posts, $page = 1, $perpage = 0){
 		$arr = explode('t-->', $content);
 		if(isset($arr[1])) {
 			$title = str_replace('<!--t','',$arr[0]);
-			$title = rtrim(ltrim($title, ' '), ' ');	
+			$title = rtrim(ltrim($title, ' '), ' ');
 			$post->title = $title;
 			$post->body = $arr[1];
 		}
@@ -199,18 +199,18 @@ function get_posts($posts, $page = 1, $perpage = 0){
 function find_post($year, $month, $name){
 
 	$posts = get_post_sorted();
-	
+
 	foreach ($posts as $index => $v) {
 		$url = $v['basename'];
 		if( strpos($url, "$year-$month") !== false && strpos($url, $name.'.md') !== false){
-		
+
 			// Use the get_posts method to return
 			// a properly parsed object
 
 			$ar = get_posts($posts, $index+1,1);
 			$nx = get_posts($posts, $index,1);
 			$pr = get_posts($posts, $index+2,1);
-			
+
 			if ($index == 0) {
 				if(isset($pr[0])) {
 					return array(
@@ -238,7 +238,7 @@ function find_post($year, $month, $name){
 					'prev'=> $pr[0]
 				);
 			}
-		
+
 		}
 	}
 }
@@ -247,13 +247,13 @@ function find_post($year, $month, $name){
 function get_tag($tag, $page, $perpage, $random){
 
 	$posts = get_post_sorted();
-	
+
 	if($random === true) {
 		shuffle($posts);
 	}
-	
+
 	$tmp = array();
-	
+
 	foreach ($posts as $index => $v) {
 		$url = $v['filename'];
 		$str = explode('_', $url);
@@ -267,22 +267,22 @@ function get_tag($tag, $page, $perpage, $random){
 			}
 		}
 	}
-	
+
 	if(empty($tmp)) {
 		not_found();
 	}
-	
+
 	return $tmp = get_posts($tmp, $page, $perpage);
-	
+
 }
 
 // Return archive page.
 function get_archive($req, $page, $perpage){
 
 	$posts = get_post_sorted();
-	
+
 	$tmp = array();
-	
+
 	foreach ($posts as $index => $v) {
 		$url = $v['filename'];
 		$str = explode('_', $url);
@@ -290,22 +290,22 @@ function get_archive($req, $page, $perpage){
 			$tmp[] = $v;
 		}
 	}
-	
+
 	if(empty($tmp)) {
 		not_found();
 	}
-	
+
 	return $tmp = get_posts($tmp, $page, $perpage);
-	
+
 }
 
 // Return posts list on profile.
 function get_profile($profile, $page, $perpage){
 
 	$posts = get_post_sorted();
-	
+
 	$tmp = array();
-	
+
 	foreach ($posts as $index => $v) {
 		$url = $v['dirname'];
 		$str = explode('/', $url);
@@ -314,106 +314,41 @@ function get_profile($profile, $page, $perpage){
 			$tmp[] = $v;
 		}
 	}
-	
+
 	if(empty($tmp)) {
-		return;	
+		return;
 	}
-	
+
 	return $tmp = get_posts($tmp, $page, $perpage);
-	
+
 }
 
 // Return author bio.
 function get_bio($author){
 
 	$names = get_author_names();
-	
+
 	$username = 'config/users/' . $author . '.ini';
-	
+
 	$tmp = array();
-	
+
 	if(!empty($names)) {
-	
+
 		foreach($names as $index => $v){
 			$post = new stdClass;
-			
+
 			// Replaced string
 			$replaced = substr($v, 0,strrpos($v, '/')) . '/';
-			
+
 			// Author string
 			$str = explode('/', $replaced);
 			$profile = $str[count($str)-2];
-			
+
 			if($author === $profile){
 				// Profile URL
 				$url = str_replace($replaced,'',$v);
 				$post->url = site_url() . 'author/' . $profile;
-				
-				// Get the contents and convert it to HTML
-				$content = MarkdownExtra::defaultTransform(file_get_contents($v));
-	
-				// Extract the title and body
-				$arr = explode('t-->', $content);
-				if(isset($arr[1])) {		
-					$title = str_replace('<!--t','',$arr[0]);
-					$title = rtrim(ltrim($title, ' '), ' ');		
-					$post->title = $title;
-					$post->body = $arr[1];
-				}
-				else {
-					$post->title = $author;
-					$post->body = $arr[0];
-				}
-	
-				$tmp[] = $post;
-			}
-		}
-	}
-	
-	if(!empty($tmp) || file_exists($username)) {
-		return $tmp;
-	}
-	else {
-		not_found();
-	}
-	
-}
 
-function default_profile($author) {
-
-	$tmp = array();
-	$profile = new stdClass;
-	
-	$profile->title = $author;
-	$profile->body = '<p>Just another HTMLy user.</p>';
-	
-	return $tmp[] = $profile;
-	
-}
-
-// Return static page.
-function get_static_post($static){
-
-	$posts = get_static_pages();
-	
-	$tmp = array();
-
-	if(!empty($posts)) {
-
-		foreach($posts as $index => $v){
-			if(strpos($v, $static.'.md') !== false){
-			
-				$post = new stdClass;
-				
-				// Replaced string
-				$replaced = substr($v, 0, strrpos($v, '/')) . '/';
-				
-				// The static page URL
-				$url = str_replace($replaced,'',$v);
-				$post->url = site_url() . str_replace('.md','',$url);
-				
-				$post->file = $v;
-				
 				// Get the contents and convert it to HTML
 				$content = MarkdownExtra::defaultTransform(file_get_contents($v));
 
@@ -421,7 +356,72 @@ function get_static_post($static){
 				$arr = explode('t-->', $content);
 				if(isset($arr[1])) {
 					$title = str_replace('<!--t','',$arr[0]);
-					$title = rtrim(ltrim($title, ' '), ' ');		
+					$title = rtrim(ltrim($title, ' '), ' ');
+					$post->title = $title;
+					$post->body = $arr[1];
+				}
+				else {
+					$post->title = $author;
+					$post->body = $arr[0];
+				}
+
+				$tmp[] = $post;
+			}
+		}
+	}
+
+	if(!empty($tmp) || file_exists($username)) {
+		return $tmp;
+	}
+	else {
+		not_found();
+	}
+
+}
+
+function default_profile($author) {
+
+	$tmp = array();
+	$profile = new stdClass;
+
+	$profile->title = $author;
+	$profile->body = '<p>Just another HTMLy user.</p>';
+
+	return $tmp[] = $profile;
+
+}
+
+// Return static page.
+function get_static_post($static){
+
+	$posts = get_static_pages();
+
+	$tmp = array();
+
+	if(!empty($posts)) {
+
+		foreach($posts as $index => $v){
+			if(strpos($v, $static.'.md') !== false){
+
+				$post = new stdClass;
+
+				// Replaced string
+				$replaced = substr($v, 0, strrpos($v, '/')) . '/';
+
+				// The static page URL
+				$url = str_replace($replaced,'',$v);
+				$post->url = site_url() . str_replace('.md','',$url);
+
+				$post->file = $v;
+
+				// Get the contents and convert it to HTML
+				$content = MarkdownExtra::defaultTransform(file_get_contents($v));
+
+				// Extract the title and body
+				$arr = explode('t-->', $content);
+				if(isset($arr[1])) {
+					$title = str_replace('<!--t','',$arr[0]);
+					$title = rtrim(ltrim($title, ' '), ' ');
 					$post->title = $title;
 					$post->body = $arr[1];
 				}
@@ -431,25 +431,25 @@ function get_static_post($static){
 				}
 
 				$tmp[] = $post;
-				
+
 			}
 		}
-	
+
 	}
-	
+
 	return $tmp;
-	
+
 }
 
 // Return search page.
 function get_keyword($keyword, $page, $perpage){
 
 	$posts = get_post_sorted();
-	
+
 	$tmp = array();
-	
+
 	$words = explode(' ', $keyword);
-	
+
 	foreach ($posts as $index => $v) {
 		$arr = explode('_', $v['filename']);
 		$filter = $arr[1] .' '. $arr[2];
@@ -459,15 +459,15 @@ function get_keyword($keyword, $page, $perpage){
 			}
 		}
 	}
-	
+
 	if(empty($tmp)) {
 		// a non-existing page
 		render('404-search', null, false);
 		die;
 	}
-	
+
 	return $tmp = get_posts($tmp, $page, $perpage);
-		
+
 }
 
 // Get related posts base on post tag.
@@ -476,18 +476,18 @@ function get_related($tag) {
 	$posts = get_tag(strip_tags($tag), 1, $perpage+1, true);
 	$tmp = array();
 	$req = $_SERVER['REQUEST_URI'];
-	
+
 	foreach ($posts as $post) {
 		$url = $post->url;
 		if( strpos($url, $req) === false){
 			$tmp[] = $post;
 		}
 	}
-	
+
 	$total = count($tmp);
-	
+
 	if($total >= 1) {
-		
+
 		$i = 1;
 		echo '<div class="related"><h4>Related posts</h4><ul>';
 		foreach ($tmp as $post) {
@@ -496,36 +496,36 @@ function get_related($tag) {
 		}
 		echo '</ul></div>';
 	}
-	
+
 }
 
 // Return post count. Matching $var and $str provided.
 function get_count($var, $str) {
 
 	$posts = get_post_sorted();
-	
+
 	$tmp = array();
-	
+
 	foreach ($posts as $index => $v) {
 		$url = $v[$str];
 		if( strpos($url, "$var") !== false){
 			$tmp[] = $v;
 		}
 	}
-	
+
 	return count($tmp);
-	
+
 }
 
 // Return seaarch result count
 function keyword_count($keyword) {
 
 	$posts = get_post_sorted();
-	
+
 	$tmp = array();
-	
+
 	$words = explode(' ', $keyword);
-	
+
 	foreach ($posts as $index => $v) {
 		$arr = explode('_', $v['filename']);
 		$filter = $arr[1] .' '. $arr[2];
@@ -535,11 +535,11 @@ function keyword_count($keyword) {
 			}
 		}
 	}
-	
+
 	$tmp = array_unique($tmp, SORT_REGULAR);
-	
+
 	return count($tmp);
-	
+
 }
 
 // Return an archive list, categorized by year and month.
@@ -548,31 +548,31 @@ function archive_list() {
 	$posts = get_post_unsorted();
 	$by_year = array();
 	$col = array();
-	
+
 	if(!empty($posts)) {
-	
+
 		foreach($posts as $index => $v){
-		
+
 			$arr = explode('_', $v);
-			
+
 			// Replaced string
 			$str = $arr[0];
 			$replaced = substr($str, 0,strrpos($str, '/')) . '/';
-			
+
 			$date = str_replace($replaced,'',$arr[0]);
 			$data = explode('-', $date);
 			$col[] = $data;
-			
+
 		}
-		
+
 		foreach ($col as $row){
-		
+
 			$y = $row['0'];
 			$m = $row['1'];
 			$by_year[$y][] = $m;
 
 		}
-		
+
 		# Most recent year first
 		krsort($by_year);
 		# Iterate for display
@@ -584,19 +584,19 @@ EOF;
 		</style>
 EOF;
 		echo '<h3>Archive</h3>';
-		$i = 0; 
+		$i = 0;
 		$len = count($by_year);
 		foreach ($by_year as $year => $months){
 			if ($i == 0) {
 				$class = 'expanded';
 				$arrow = '&#9660;';
-			} 
+			}
 			else {
 				$class = 'collapsed';
 				$arrow = '&#9658;';
 			}
 			$i++;
-			
+
 			echo '<ul class="archivegroup">';
 			echo '<li class="' . $class . '">';
 			echo '<a href="javascript:void(0)" class="toggle" onclick="' . $script . '">' . $arrow . '</a> ';
@@ -616,11 +616,11 @@ EOF;
 			echo '</ul>';
 			echo '</li>';
 			echo '</ul>';
-			
+
 		}
-	
+
 	}
-	
+
 }
 
 // Return tag cloud.
@@ -628,33 +628,33 @@ function tag_cloud() {
 
 	$posts = get_post_unsorted();
 	$tags = array();
-	
+
 	if(!empty($posts)) {
-	
+
 		foreach($posts as $index => $v){
-		
+
 			$arr = explode('_', $v);
-			
+
 			$data = $arr[1];
 			$mtag = explode(',', $data);
 			foreach($mtag as $etag) {
 				$tags[] = $etag;
 			}
-			
+
 		}
-		
+
 		$tag_collection = array_count_values($tags);
 		ksort($tag_collection);
-		
+
 		echo '<h3>Tags</h3>';
 		echo '<ul class="taglist">';
 		foreach ($tag_collection as $tag => $count){
 			echo '<li class="item"><a href="' . site_url() . 'tag/' . $tag . '">' . $tag . '</a> <span class="count">(' . $count . ')</span></li>';
 		}
 		echo '</ul>';
-	
+
 	}
-	
+
 }
 
 // Helper function to determine whether
@@ -693,11 +693,11 @@ function has_pagination($total, $perpage, $page = 1){
 
 // Get the meta description
 function get_description($text) {
-	
+
 	$string = explode('</p>', $text);
 	$string = preg_replace('/[^A-Za-z0-9 !@#$%^&*(),.-]/u', ' ', strip_tags($string[0] . '</p>'));
 	$string = ltrim($string);
-	
+
 	if (strlen($string) > 1) {
 		return $string;
 	}
@@ -719,7 +719,7 @@ function get_description($text) {
 function get_teaser($text, $url) {
 
 	$teaserType = config('teaser.type');
-	
+
 	if (strlen(strip_tags($text)) < config('teaser.char') || $teaserType === 'full') {
 		echo $text;
 	}
@@ -767,13 +767,13 @@ function get_thumbnail($text) {
 					return '<div class="thumbnail" style="background-image:url(' . $default . ');"></div>';
 				}
 			}
-			
+
 		}
 		else {
-		
+
 		}
 	}
-	
+
 }
 
 // Return edit tab on post
@@ -801,30 +801,30 @@ function base64_encode_image($filename=string,$filetype=string) {
 // Social links
 function social(){
 
-	$twitter = config('social.twitter'); 
-	$facebook = config('social.facebook'); 
-	$google = config('social.google'); 
+	$twitter = config('social.twitter');
+	$facebook = config('social.facebook');
+	$google = config('social.google');
 	$tumblr = config('social.tumblr');
 	$rss = site_url() . 'feed/rss';
-	
+
 	if (!empty($twitter)) {
 		echo '<a href="' . $twitter . '" target="_blank"><img src="' . site_url() . 'themes/default/img/twitter.png" width="32" height="32" alt="Twitter"/></a>';
 	}
-	
+
 	if (!empty($facebook)) {
 		echo '<a href="' . $facebook . '" target="_blank"><img src="' . site_url() . 'themes/default/img/facebook.png" width="32" height="32" alt="Facebook"/></a>';
 	}
-	
+
 	if (!empty($google)) {
 		echo '<a href="' . $google . '" target="_blank"><img src="' . site_url() . 'themes/default/img/googleplus.png" width="32" height="32" alt="Google+"/></a>';
 	}
-	
+
 	if (!empty($tumblr)) {
 		echo '<a href="' . $tumblr . '" target="_blank"><img src="' . site_url() . 'themes/default/img/tumblr.png" width="32" height="32" alt="Tumblr"/></a>';
 	}
-	
+
 	echo '<a href="' . site_url() . 'feed/rss" target="_blank"><img src="' . site_url() . 'themes/default/img/rss.png" width="32" height="32" alt="RSS Feed"/></a>';
-	
+
 }
 
 // Copyright
@@ -832,14 +832,14 @@ function copyright(){
 
 	$blogcp = blog_copyright();
 	$credit = 'Proudly powered by <a href="http://www.htmly.com" target="_blank">HTMLy</a>.';
-	
+
 	if (!empty($blogcp)) {
 		return $copyright = '<p>' . $blogcp .  '</p><p>' . $credit . '</p>';
 	}
 	else {
 		return $credit = '<p>' . $credit . '</p>';
 	}
-	
+
 }
 
 // Disqus on post.
@@ -952,34 +952,34 @@ EOF;
 function menu(){
 	$menu = config('blog.menu');
 	$req = $_SERVER['REQUEST_URI'];
-	
+
 	if (!empty($menu)) {
-	
+
 		$links = explode('|', $menu);
-		
+
 		echo '<ul class="nav">';
-		
-		$i = 0; 
+
+		$i = 0;
 		$len = count($links);
-		
+
 		foreach($links as $link) {
-		
+
 			if ($i == 0) {
 				$class = 'item first';
-			} 
+			}
 			elseif ($i == $len - 1) {
 				$class = 'item last';
 			}
 			else {
 				$class = 'item';
 			}
-			
-			$i++;	
-			
+
+			$i++;
+
 			$anc = explode('->', $link);
-			
+
 			if(isset($anc[0]) && isset($anc[1])) {
-			
+
 				if(strpos(rtrim($anc[1],'/').'/', site_url()) !== false) {
 					$id = substr($link, strrpos($link, '/')+1 );
 					$file = 'content/static/' . $id . '.md';
@@ -1005,10 +1005,10 @@ function menu(){
 				else {
 					echo '<li class="' . $class . '"><a target="_blank" href="' . $anc[1] . '">' . $anc[0] . '</a></li>';
 				}
-				
+
 			}
 		}
-		
+
 		echo '</ul>';
 	}
 	else {
@@ -1025,7 +1025,7 @@ function get_menu() {
 	if(!empty($posts)) {
 
 		krsort($posts);
-		
+
 		echo '<ul class="nav">';
 		if($req == site_path() . '/') {
 			echo '<li class="item first active"><a href="' . site_url() . '">' .config('breadcrumb.home'). '</a></li>';
@@ -1033,12 +1033,12 @@ function get_menu() {
 		else {
 			echo '<li class="item first"><a href="' . site_url() . '">' .config('breadcrumb.home'). '</a></li>';
 		}
-		
-		$i = 0; 
+
+		$i = 0;
 		$len = count($posts);
-		
+
 		foreach($posts as $index => $v){
-		
+
 				if ($i == $len - 1) {
 					$class = 'item last';
 				}
@@ -1046,12 +1046,12 @@ function get_menu() {
 					$class = 'item';
 				}
 				$i++;
-		
+
 			// Replaced string
 			$replaced = substr($v, 0, strrpos($v, '/')) . '/';
 			$base = str_replace($replaced,'',$v);
 			$url = site_url() . str_replace('.md','',$base);
-			
+
 			// Get the contents and convert it to HTML
 			$content = MarkdownExtra::defaultTransform(file_get_contents($v));
 
@@ -1059,25 +1059,25 @@ function get_menu() {
 			$arr = explode('t-->', $content);
 			if(isset($arr[1])) {
 				$title = str_replace('<!--t','',$arr[0]);
-				$title = rtrim(ltrim($title, ' '), ' ');		
+				$title = rtrim(ltrim($title, ' '), ' ');
 			}
 			else {
 				$title = str_replace('-',' ', str_replace('.md','',$base));
 			}
-			
+
 			if(strpos($req, str_replace('.md','',$base)) !== false){
 				echo '<li class="' . $class . ' active"><a href="' . $url . '">' . ucwords($title) . '</a></li>';
 			}
 			else {
 				echo '<li class="' . $class . '"><a href="' . $url . '">' . ucwords($title) . '</a></li>';
 			}
-				
+
 		}
 		echo '</ul>';
-	
+
 	}
 	else {
-	
+
 		echo '<ul class="nav">';
 		if($req == site_path() . '/') {
 			echo '<li class="item first active"><a href="' . site_url() . '">' .config('breadcrumb.home'). '</a></li>';
@@ -1086,9 +1086,9 @@ function get_menu() {
 			echo '<li class="item first"><a href="' . site_url() . '">' .config('breadcrumb.home'). '</a></li>';
 		}
 		echo '</ul>';
-	
+
 	}
-	
+
 }
 
 // Search form
@@ -1100,7 +1100,7 @@ function search() {
 	</form>
 EOF;
 	if(isset($_GET['search'])) {
-		$url = site_url() . 'search/' . $_GET['search']; 
+		$url = site_url() . 'search/' . $_GET['search'];
 		header ("Location: $url");
 	}
 }
@@ -1112,11 +1112,11 @@ function not_found(){
 
 // Turn an array of posts into an RSS feed
 function generate_rss($posts){
-	
+
 	$feed = new Feed();
 	$channel = new Channel();
 	$rssLength = config('rss.char');
-	
+
 	$channel
 		->title(blog_title())
 		->description(blog_description())
@@ -1124,7 +1124,7 @@ function generate_rss($posts){
 		->appendTo($feed);
 
 	foreach($posts as $p){
-	
+
 		if(!empty($rssLength)) {
 			if (strlen(strip_tags($p->body)) < config('rss.char')) {
 				$string = preg_replace('/\s\s+/', ' ', strip_tags($p->body));
@@ -1140,7 +1140,7 @@ function generate_rss($posts){
 		else {
 			$body = $p->body;
 		}
-	
+
 		$item = new Item();
 		$tags = explode(',', str_replace(' ', '', strip_tags($p->tag)));
 		foreach($tags as $tag) {
@@ -1154,49 +1154,49 @@ function generate_rss($posts){
 			->url($p->url)
 			->appendTo($channel);
 	}
-	
+
 	echo $feed;
 }
 
-// Return post, archive url. 
+// Return post, archive url.
 function get_path(){
-		
+
 	$posts = get_post_sorted();
-	
+
 	$tmp = array();
-	
+
 	foreach($posts as $index => $v){
 
 		$post = new stdClass;
-		
+
 		$filepath = $v['dirname'] . '/' . $v['basename'];
 
 		// Extract the date
 		$arr = explode('_', $filepath);
-		
+
 		// Replaced string
 		$replaced = substr($arr[0], 0,strrpos($arr[0], '/')) . '/';
-		
+
 		// Author string
 		$str = explode('/', $replaced);
 		$author = $str[count($str)-3];
-		
+
 		$post->authorurl = site_url() . 'author/' .  $author;
-		
+
 		$dt = str_replace($replaced,'',$arr[0]);
 		$t = str_replace('-', '', $dt);
 		$time = new DateTime($t);
 		$timestamp= $time->format("Y-m-d H:i:s");
-		
+
 		// The post date
 		$post->date = strtotime($timestamp);
-		
+
 		// The archive per day
 		$post->archiveday = site_url(). 'archive/' . date('Y-m-d', $post->date) ;
-		
+
 		// The archive per day
 		$post->archivemonth = site_url(). 'archive/' . date('Y-m', $post->date) ;
-		
+
 		// The archive per day
 		$post->archiveyear = site_url(). 'archive/' . date('Y', $post->date) ;
 
@@ -1215,189 +1215,189 @@ function get_static_path(){
 	$posts = get_static_pages();
 
 	$tmp = array();
-	
+
 	if(!empty($posts)) {
 
 		foreach($posts as $index => $v){
-			
+
 			$post = new stdClass;
-			
+
 			// Replaced string
 			$replaced = substr($v, 0, strrpos($v, '/')) . '/';
-			
+
 			// The static page URL
 			$url = str_replace($replaced,'',$v);
 			$post->url = site_url() . str_replace('.md','',$url);
 
 			$tmp[] = $post;
-				
+
 		}
-	
+
 	}
-	
+
 	return $tmp;
-	
+
 }
 
 // Generate sitemap.xml.
 function generate_sitemap($str){
-	
+
 	echo '<?xml version="1.0" encoding="UTF-8"?>';
-	
+
 	if ($str == 'index') {
-	
+
 		echo '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 		echo '<sitemap><loc>' . site_url() . 'sitemap.base.xml</loc></sitemap>';
 		echo '<sitemap><loc>' . site_url() . 'sitemap.post.xml</loc></sitemap>';
 		echo '<sitemap><loc>' . site_url() . 'sitemap.static.xml</loc></sitemap>';
 		echo '<sitemap><loc>' . site_url() . 'sitemap.tag.xml</loc></sitemap>';
 		echo '<sitemap><loc>' . site_url() . 'sitemap.archive.xml</loc></sitemap>';
-		echo '<sitemap><loc>' . site_url() . 'sitemap.author.xml</loc></sitemap>';		
+		echo '<sitemap><loc>' . site_url() . 'sitemap.author.xml</loc></sitemap>';
 		echo '</sitemapindex>';
-		
+
 	}
 	elseif ($str == 'base') {
-	
+
 		echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 		echo '<url><loc>' . site_url() . '</loc><priority>1.0</priority></url>';
 		echo '</urlset>';
-		
+
 	}
 	elseif ($str == 'post') {
-	
+
 		$posts = get_path();
-		
+
 		echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-		
+
 		foreach($posts as $p) {
 			echo '<url><loc>' . $p->url . '</loc><priority>0.5</priority></url>';
 		}
-		
+
 		echo '</urlset>';
-		
+
 	}
 	elseif ($str == 'static') {
-	
+
 		$posts = get_static_path();
-		
+
 		echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-		
+
 		if(!empty($posts)) {
-		
+
 			foreach($posts as $p) {
 				echo '<url><loc>' . $p->url . '</loc><priority>0.5</priority></url>';
 			}
-		
+
 		}
-		
+
 		echo '</urlset>';
-		
+
 	}
 	elseif ($str == 'tag') {
-	
+
 		$posts = get_post_unsorted();
 		$tags = array();
-		
+
 		if(!empty($posts)) {
 			foreach($posts as $index => $v){
-			
+
 				$arr = explode('_', $v);
-				
+
 				$data = $arr[1];
 				$mtag = explode(',', $data);
 				foreach($mtag as $etag) {
 					$tags[] = $etag;
 				}
-				
+
 			}
-			
+
 			foreach($tags as $t) {
 				$tag[] = site_url() . 'tag/' . $t;
 			}
-			
+
 			echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-			
+
 			if(isset($tag)) {
-			
+
 				$tag = array_unique($tag, SORT_REGULAR);
-				
+
 				foreach($tag as $t) {
 					echo '<url><loc>' . $t . '</loc><priority>0.5</priority></url>';
 				}
-			
+
 			}
-			
+
 			echo '</urlset>';
-		
+
 		}
-		
+
 	}
 	elseif ($str == 'archive') {
-	
+
 		$posts = get_path();
 		$day = array();
 		$month = array();
 		$year = array();
-	
+
 		foreach($posts as $p) {
 			$day[] = $p->archiveday;
 			$month[] = $p->archivemonth;
 			$year[] = $p->archiveyear;
-			
+
 		}
-	
+
 		$day = array_unique($day, SORT_REGULAR);
 		$month = array_unique($month, SORT_REGULAR);
 		$year = array_unique($year, SORT_REGULAR);
-		
+
 		echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-		
+
 		foreach($day as $d) {
 			echo '<url><loc>' . $d . '</loc><priority>0.5</priority></url>';
 		}
-		
+
 		foreach($month as $m) {
 			echo '<url><loc>' . $m . '</loc><priority>0.5</priority></url>';
 		}
-		
+
 		foreach($year as $y) {
 			echo '<url><loc>' . $y . '</loc><priority>0.5</priority></url>';
 		}
-		
+
 		echo '</urlset>';
-		
+
 	}
 	elseif ($str == 'author') {
-	
+
 		$posts = get_path();
 		$author = array();
-		
+
 		foreach($posts as $p) {
 			$author[] = $p->authorurl;
 		}
-		
+
 		$author = array_unique($author, SORT_REGULAR);
-		
+
 		echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-		
+
 		foreach($author as $a) {
 			echo '<url><loc>' . $a . '</loc><priority>0.5</priority></url>';
 		}
-		
+
 		echo '</urlset>';
-		
+
 	}
-	
+
 }
 
 // Function to generate OPML file
 function generate_opml(){
-	
+
 	$opml_data = array(
 		'head' => array(
 			'title' => blog_title() . ' OPML File',
 			'ownerName' => blog_title(),
-			'ownerId' => site_url() 
+			'ownerId' => site_url()
 			),
 		'body' => array(
 			array(
@@ -1434,7 +1434,7 @@ function Zip($source, $destination, $include_dir = false) {
 	}
 
 	$zip = new ZipArchive();
-	
+
 	if (!$zip->open($destination, ZIPARCHIVE::CREATE)) {
 		return false;
 	}
@@ -1457,7 +1457,7 @@ function Zip($source, $destination, $include_dir = false) {
 				$zip->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
 			}
 		}
-		
+
 	}
 	else if (is_file($source) === true) {
 		$zip->addFromString(basename($source), file_get_contents($source));
@@ -1520,7 +1520,7 @@ function head_contents($title, $description, $canonical) {
 	$styleImage = config('lightbox');
 	$jq = config('jquery');
 	$output = '';
-	
+
 	$title = '<title>' . $title . '</title>';
 	$favicon = '<link href="' . site_url() . 'favicon.ico" rel="icon" type="image/x-icon"/>';
 	$charset = '<meta charset="utf-8" />';
@@ -1535,7 +1535,7 @@ function head_contents($title, $description, $canonical) {
 	$jquery = '<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>';
 	$lightbox = '<script src="' . site_url() . 'system/plugins/lightbox/js/lightbox-2.6.min.js"></script>';
 	$corejs = '<script src="' . site_url() . 'system/resources/htmly.js"></script>';
-	
+
 	if($styleImage == 'on') {
 		$output .= $title ."\n". $favicon ."\n". $charset ."\n". $generator ."\n". $xua ."\n". $viewport ."\n". $description ."\n". $sitemap ."\n". $canonical ."\n". $feed ."\n". $lightboxcss ."\n". $jquery ."\n". $lightbox ."\n" .$corejs ."\n";
 	}
@@ -1547,9 +1547,9 @@ function head_contents($title, $description, $canonical) {
 			$output .= $title ."\n". $favicon ."\n". $charset ."\n". $generator ."\n". $xua ."\n". $viewport ."\n". $description ."\n". $sitemap ."\n". $canonical ."\n". $feed ."\n";
 		}
 	}
-	
+
 	return $output;
-	
+
 }
 
 // Return toolbar
@@ -1557,7 +1557,7 @@ function toolbar() {
 	$user = $_SESSION['user'];
 	$role = user('role', $user);
 	$base = site_url();
-	
+
 	echo <<<EOF
 	<link href="{$base}themes/default/css/toolbar.css" rel="stylesheet" />
 EOF;
@@ -1571,6 +1571,6 @@ EOF;
 	echo '<li><a href="'.$base.'admin/import">Import</a></li>';
 	echo '<li><a href="'.$base.'admin/backup">Backup</a></li>';
 	echo '<li><a href="'.$base.'logout">Logout</a></li>';
-		
+
 	echo '</ul></div>';
 }
