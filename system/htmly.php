@@ -1,7 +1,7 @@
 <?php
 
 // Change this to your timezone
-date_default_timezone_set('Asia/Jakarta');
+date_default_timezone_set('Europe/Paris');
 
 // Explicitly including the dispatch framework,
 // and our functions.php file
@@ -21,26 +21,26 @@ get('/index', function () {
 	$page = from($_GET, 'page');
 	$page = $page ? (int)$page : 1;
 	$perpage = config('posts.perpage');
-	
+
 	$posts = get_posts(null, $page, $perpage);
-	
+
 	$total = '';
-	
+
 	$tl = blog_tagline();
-	
+
 	if($tl){ $tagline = ' - ' . $tl;} else {$tagline = '';}
-	
+
 	if(empty($posts) || $page < 1){
-	
+
 		// a non-existing page
 		render('no-posts',array(
 			'head_contents' => head_contents(blog_title() . $tagline, blog_description(), site_url()),
 			'bodyclass' => 'noposts',
 		));
-		
+
 		die;
 	}
-	
+
     render('main',array(
 		'head_contents' => head_contents(blog_title() . $tagline, blog_description(), site_url()),
     	'page' => $page,
@@ -53,18 +53,18 @@ get('/index', function () {
 
 // Get submitted login data
 post('/login', function() {
-	
+
 	$user = from($_REQUEST, 'user');
 	$pass = from($_REQUEST, 'password');
 	if(!empty($user) && !empty($pass)) {
-	
-		session($user, $pass, null);		
+
+		session($user, $pass, null);
 		$log = session($user, $pass, null);
-		
+
 		if(!empty($log)) {
-			
+
 			config('views.root', 'system/admin/views');
-			
+
 			render('login',array(
 				'head_contents' => head_contents('Login - ' . blog_title(), 'Login page on ' .blog_title(), site_url()),
 				'error' => '<ul>' . $log . '</ul>',
@@ -81,9 +81,9 @@ post('/login', function() {
 		if (empty($pass)) {
 			$message['error'] .= '<li>Password field is required.</li>';
 		}
-		
+
 		config('views.root', 'system/admin/views');
-		
+
 		render('login',array(
 			'head_contents' => head_contents('Login - ' . blog_title(), 'Login page on ' .blog_title(), site_url()),
 			'error' => '<ul>' . $message['error'] . '</ul>',
@@ -100,36 +100,36 @@ post('/login', function() {
 get('/:year/:month/:name', function($year, $month, $name){
 
 	$post = find_post($year, $month, $name);
-	
+
 	$current = $post['current'];
-	
+
 	if(!$current){
 		not_found();
 	}
-	
+
 	$bio = get_bio($current->author);
-	
+
 	if(isset($bio[0])) {
 		$bio = $bio[0];
 	}
 	else {
 		$bio = default_profile($current->author);
 	}
-	
+
 	if (array_key_exists('prev', $post)) {
 		$prev = $post['prev'];
 	}
 	else {
 		$prev = array();
 	}
-	
+
 	if (array_key_exists('next', $post)) {
 		$next= $post['next'];
 	}
 	else {
 		$next = array();
 	}
-	
+
 	render('post',array(
 		'head_contents' => head_contents($current->title .' - ' . blog_title(), $description = get_description($current->body), $current->url),
 		'p' => $current,
@@ -152,13 +152,13 @@ get('/:year/:month/:name/edit', function($year, $month, $name){
 
 		config('views.root', 'system/admin/views');
 		$post = find_post($year, $month, $name);
-		
+
 		if(!$post){
 			not_found();
 		}
-		
+
 		$current = $post['current'];
-		
+
 		if($user === $current->author || $role === 'admin') {
 			render('edit-post',array(
 				'head_contents' => head_contents('Edit post - ' . blog_title(), blog_description(), site_url()),
@@ -184,7 +184,7 @@ get('/:year/:month/:name/edit', function($year, $month, $name){
 
 // Get edited data for blog post
 post('/:year/:month/:name/edit', function() {
-	
+
 	$title = from($_REQUEST, 'title');
 	$tag = from($_REQUEST, 'tag');
 	$url = from($_REQUEST, 'url');
@@ -212,7 +212,7 @@ post('/:year/:month/:name/edit', function() {
 			$message['error'] .= '<li>Content field is required.</li>';
 		}
 		config('views.root', 'system/admin/views');
-		
+
 		render('edit-post',array(
 			'head_contents' => head_contents('Edit post - ' . blog_title(), blog_description(), site_url()),
 			'error' => '<ul>' . $message['error'] . '</ul>',
@@ -225,27 +225,27 @@ post('/:year/:month/:name/edit', function() {
 			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Edit post'
 		));
 	}
-	
+
 });
 
 // Delete blog post
 get('/:year/:month/:name/delete', function($year, $month, $name){
 
 	$user = $_SESSION['user'];
-	
+
 	$role = user('role', $user);
 
 	if(login()) {
-	
+
 		config('views.root', 'system/admin/views');
 		$post = find_post($year, $month, $name);
-		
+
 		if(!$post){
 			not_found();
 		}
-		
+
 		$current = $post['current'];
-		
+
 		if($user === $current->author || $role === 'admin') {
 			render('delete-post',array(
 				'head_contents' => head_contents('Delete post - ' . blog_title(), blog_description(), site_url()),
@@ -273,9 +273,9 @@ get('/:year/:month/:name/delete', function($year, $month, $name){
 post('/:year/:month/:name/delete', function() {
 
 	$file = from($_REQUEST, 'file');
-	$destination = from($_GET, 'destination');	
+	$destination = from($_GET, 'destination');
 	delete_post($file, $destination);
-	
+
 });
 
 // The author page
@@ -286,18 +286,18 @@ get('/author/:profile', function($profile){
 	$perpage = config('profile.perpage');
 
 	$posts = get_profile($profile, $page, $perpage);
-	
+
 	$total = get_count($profile, 'dirname');
-	
+
 	$bio = get_bio($profile);
-	
+
 	if(isset($bio[0])) {
 		$bio = $bio[0];
 	}
 	else {
 		$bio = default_profile($profile);
 	}
-	
+
 	if(empty($posts) || $page < 1){
 		render('profile',array(
 			'head_contents' => head_contents('Profile for:  '. $bio->title .' - ' . blog_title(), 'Profile page and all posts by ' . $bio->title . ' on ' . blog_title() . '.', site_url() . 'author/' . $profile),
@@ -311,7 +311,7 @@ get('/author/:profile', function($profile){
 		));
 		die;
 	}
-	
+
     render('profile',array(
 		'head_contents' => head_contents('Profile for:  '. $bio->title .' - ' . blog_title(), 'Profile page and all posts by ' . $bio->title . ' on ' . blog_title() . '.', site_url() . 'author/' . $profile),
     	'page' => $page,
@@ -360,7 +360,7 @@ post('/edit/profile', function() {
 			$message['error'] .= '<li>Content field is required.</li>';
 		}
 		config('views.root', 'system/admin/views');
-		
+
 		render('edit-profile',array(
 			'head_contents' => head_contents('Edit profile - ' . blog_title(), blog_description(), site_url()),
 			'error' => '<ul>' . $message['error'] . '</ul>',
@@ -370,7 +370,7 @@ post('/edit/profile', function() {
 			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Edit profile'
 		));
 	}
-	
+
 });
 
 get('/admin/posts', function () {
@@ -378,34 +378,34 @@ get('/admin/posts', function () {
 	$user = $_SESSION['user'];
 	$role = user('role', $user);
 	if(login()) {
-	
+
 		config('views.root', 'system/admin/views');
 		if($role === 'admin') {
-	
+
 			config('views.root', 'system/admin/views');
 			$page = from($_GET, 'page');
 			$page = $page ? (int)$page : 1;
 			$perpage = 20;
-			
+
 			$posts = get_posts(null, $page, $perpage);
-			
+
 			$total = '';
-			
+
 			if(empty($posts) || $page < 1){
-			
+
 				// a non-existing page
 				render('no-posts',array(
 					'head_contents' => head_contents('All blog posts - ' . blog_title(), blog_description(), site_url()),
 					'bodyclass' => 'noposts',
 				));
-				
+
 				die;
 			}
-			
+
 			$tl = blog_tagline();
-			
+
 			if($tl){ $tagline = ' - ' . $tl;} else {$tagline = '';}
-			
+
 			render('posts-list',array(
 				'head_contents' => head_contents('All blog posts - ' . blog_title(), blog_description(), site_url()),
 				'heading' => 'All blog posts',
@@ -444,18 +444,18 @@ get('/admin/mine', function(){
 		$perpage = config('profile.perpage');
 
 		$posts = get_profile($profile, $page, $perpage);
-		
+
 		$total = get_count($profile, 'dirname');
-		
+
 		$bio = get_bio($profile);
-		
+
 		if(isset($bio[0])) {
 			$bio = $bio[0];
 		}
 		else {
 			$bio = default_profile($profile);
 		}
-		
+
 		if(empty($posts) || $page < 1){
 			render('user-posts',array(
 				'head_contents' => head_contents('My blog posts - ' . blog_title(), blog_description(), site_url()),
@@ -470,7 +470,7 @@ get('/admin/mine', function(){
 			));
 			die;
 		}
-		
+
 		render('user-posts',array(
 			'head_contents' => head_contents('My blog posts - ' . blog_title(), blog_description(), site_url()),
 			'heading' => 'My posts',
@@ -493,9 +493,9 @@ get('/admin/mine', function(){
 get('/:static', function($static){
 
 	if($static === 'sitemap.xml' || $static === 'sitemap.base.xml' || $static === 'sitemap.post.xml' || $static === 'sitemap.static.xml' || $static === 'sitemap.tag.xml' || $static === 'sitemap.archive.xml' || $static === 'sitemap.author.xml') {
-	
+
 		header('Content-Type: text/xml');
-		
+
 		if ($static === 'sitemap.xml') {
 			generate_sitemap('index');
 		}
@@ -517,9 +517,9 @@ get('/:static', function($static){
 		else if ($static === 'sitemap.author.xml') {
 			generate_sitemap('author');
 		}
-		
+
 		die;
-		
+
 	}
 	elseif($static === 'admin') {
 		if(login()) {
@@ -562,11 +562,11 @@ get('/:static', function($static){
 	}
 	else {
 		$post = get_static_post($static);
-		
+
 		if(!$post){
 			not_found();
 		}
-		
+
 		$post = $post[0];
 
 		render('static',array(
@@ -577,7 +577,7 @@ get('/:static', function($static){
 			'type' => 'staticpage',
 		));
 	}
-	
+
 });
 
 // Edit the static page
@@ -587,11 +587,11 @@ get('/:static/edit', function($static){
 
 		config('views.root', 'system/admin/views');
 		$post = get_static_post($static);
-		
+
 		if(!$post){
 			not_found();
 		}
-		
+
 		$post = $post[0];
 
 		render('edit-page',array(
@@ -634,7 +634,7 @@ post('/:static/edit', function() {
 			$message['error'] .= '<li>Content field is required.</li>';
 		}
 		config('views.root', 'system/admin/views');
-		
+
 		render('edit-page',array(
 			'head_contents' => head_contents('Edit page - ' . blog_title(), blog_description(), site_url()),
 			'error' => '<ul>' . $message['error'] . '</ul>',
@@ -646,7 +646,7 @@ post('/:static/edit', function() {
 			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Edit page'
 		));
 	}
-	
+
 });
 
 // Deleted the static page
@@ -656,11 +656,11 @@ get('/:static/delete', function($static){
 
 		config('views.root', 'system/admin/views');
 		$post = get_static_post($static);
-		
+
 		if(!$post){
 			not_found();
 		}
-		
+
 		$post = $post[0];
 
 		render('delete-page',array(
@@ -683,7 +683,7 @@ post('/:static/delete', function() {
 	$file = from($_REQUEST, 'file');
 	$destination = from($_GET, 'destination');
 	delete_page($file, $destination);
-	
+
 });
 
 // Add blog post
@@ -692,7 +692,7 @@ get('/add/post', function(){
 	if(login()) {
 
 		config('views.root', 'system/admin/views');
-		
+
 		render('add-post',array(
 			'head_contents' => head_contents('Add post - ' . blog_title(), blog_description(), site_url()),
 			'bodyclass' => 'addpost',
@@ -745,7 +745,7 @@ post('/add/post', function(){
 			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Add post'
 		));
 	}
-	
+
 });
 
 // Add the static page
@@ -754,7 +754,7 @@ get('/add/page', function(){
 	if(login()) {
 
 		config('views.root', 'system/admin/views');
-		
+
 		render('add-page',array(
 			'head_contents' => head_contents('Add page - ' . blog_title(), blog_description(), site_url()),
 			'bodyclass' => 'addpage',
@@ -801,7 +801,7 @@ post('/add/page', function(){
 			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Add page'
 		));
 	}
-	
+
 });
 
 // Import page
@@ -823,18 +823,18 @@ get('/admin/import',function(){
 
 // Get import post
 post('/admin/import', function() {
-	
+
 	$url = from($_REQUEST, 'url');
 	$credit = from($_REQUEST, 'credit');
 	if(!empty($url)) {
-	
-		get_feed($url, $credit, null);		
+
+		get_feed($url, $credit, null);
 		$log = get_feed($url, $credit, null);
-		
+
 		if(!empty($log)) {
-			
+
 			config('views.root', 'system/admin/views');
-			
+
 			render('import',array(
 				'head_contents' => head_contents('Import feed - ' . blog_title(), blog_description(), site_url()),
 				'error' => '<ul>' . $log . '</ul>',
@@ -848,9 +848,9 @@ post('/admin/import', function() {
 		if(empty($url)) {
 			$message['error'] .= '<li>You need to specify the feed url.</li>';
 		}
-		
+
 		config('views.root', 'system/admin/views');
-		
+
 		render('import',array(
 			'head_contents' => head_contents('Import feed - ' . blog_title(), blog_description(), site_url()),
 			'error' => '<ul>' . $message['error'] . '</ul>',
@@ -859,7 +859,7 @@ post('/admin/import', function() {
 			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Login'
 		));
 	}
-	
+
 });
 
 // Backup page
@@ -905,14 +905,14 @@ get('/tag/:tag',function($tag){
 	$perpage = config('tag.perpage');
 
 	$posts = get_tag($tag, $page, $perpage, false);
-	
+
 	$total = get_count($tag, 'filename');
 
 	if(empty($posts) || $page < 1){
 		// a non-existing page
 		not_found();
 	}
-	
+
     render('main',array(
 		'head_contents' => head_contents('Posts tagged: ' . $tag .' - ' . blog_title(), 'All posts tagged: ' . $tag . ' on '. blog_title() . '.', site_url() . 'tag/' . $tag),
     	'page' => $page,
@@ -931,32 +931,32 @@ get('/archive/:req',function($req){
 	$perpage = config('archive.perpage');
 
 	$posts = get_archive($req, $page, $perpage);
-	
+
 	$total = get_count($req, 'filename');
 
 	if(empty($posts) || $page < 1){
 		// a non-existing page
 		not_found();
 	}
-	
+
 	$time = explode('-', $req);
 	$date = strtotime($req);
-	
+
 	if (isset($time[0]) && isset($time[1]) && isset($time[2])) {
 		$timestamp = date('d F Y', $date);
 	}
 	else if (isset($time[0]) && isset($time[1])) {
 		$timestamp = date('F Y', $date);
-	}		
+	}
 	else {
 		$timestamp = $req;
-	}	
-	
+	}
+
 	if(!$date){
 		// a non-existing page
 		not_found();
 	}
-	
+
     render('main',array(
 		'head_contents' => head_contents('Archive for: ' . $timestamp .' - ' . blog_title(), 'Archive page for: ' . $timestamp . ' on ' . blog_title() . '.', site_url() . 'archive/' . $req),
     	'page' => $page,
@@ -975,7 +975,7 @@ get('/search/:keyword', function($keyword){
 	$perpage = config('search.perpage');
 
 	$posts = get_keyword($keyword, $page, $perpage);
-	
+
 	$total = keyword_count($keyword);
 
 	if(empty($posts) || $page < 1){
@@ -983,7 +983,7 @@ get('/search/:keyword', function($keyword){
 		render('404-search', null, false);
 		die;
 	}
-	
+
     render('main',array(
 		'head_contents' => head_contents('Search results for: ' . $keyword . ' - ' . blog_title(), 'Search results for: ' . $keyword . ' on '. blog_title() . '.', site_url() . 'search/' . $keyword),
     	'page' => $page,
@@ -1017,10 +1017,10 @@ get('/feed/rss',function(){
 get('/feed/opml',function(){
 
 	header('Content-Type: text/xml');
-	
+
 	// Generate OPML file for the RSS
 	echo generate_opml();
-	
+
 });
 
 // If we get here, it means that
