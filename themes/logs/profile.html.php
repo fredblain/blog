@@ -23,18 +23,18 @@
 			$i++;
 		?>
 	<li class="<?php echo $class;?>">
-		<span><a href="<?php echo $p->url?>"><?php echo $p->title ?></a></span> on <span><?php echo date('d F Y', $p->date)?></span> - Posted in <span><?php echo $p->tag ?></span>
+		<span><a href="<?php echo $p->url?>"><?php echo $p->title ?></a></span> le <span><?php echo date('d F Y', $p->date)?></span> - publié dans <span><?php echo $p->tag ?></span>
 	</li>
 	<?php endforeach;?>
 </ul>
 <?php if (!empty($pagination['prev']) || !empty($pagination['next'])):?>
 	<div class="pager">
 		<?php if (!empty($pagination['prev'])):?>
-			<span class="newer" >&laquo; <a href="?page=<?php echo $page-1?>" rel="prev">Newer</a></span>
+			<span class="newer" >&laquo; <a href="?page=<?php echo $page-1?>" rel="prev">Plus récent</a></span>
 		<?php endif;?>
 		<?php if (!empty($pagination['next'])):?>
-			<span class="older" ><a href="?page=<?php echo $page+1?>" rel="next">Older</a> &raquo;</span>
+			<span class="older" ><a href="?page=<?php echo $page+1?>" rel="next">Plus ancien</a> &raquo;</span>
 		<?php endif;?>
 	</div>
 <?php endif;?>
-<?php } else { echo 'No posts found!'; }?>
+<?php } else { echo 'Aucun billet trouvé !'; }?>
