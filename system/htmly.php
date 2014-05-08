@@ -694,7 +694,7 @@ get('/add/post', function(){
 		config('views.root', 'system/admin/views');
 
 		render('add-post',array(
-			'head_contents' => head_contents('Créer un bilelt - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Créer un billet - ' . blog_title(), blog_description(), site_url()),
 			'bodyclass' => 'addpost',
 			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Créer un billet'
 		));
