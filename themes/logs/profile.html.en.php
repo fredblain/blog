@@ -5,22 +5,22 @@
 		<div class="bio" itemprop="description"><?php echo $bio ?></div>
 	</div>
 </div>
-<h2 class="post-index">Billets de cet auteur</h2>
+<h2 class="post-index">Posts by this author</h2>
 <?php if(!empty($posts)) {?>
 <ul class="post-list">
 	<?php $i = 0; $len = count($posts);?>
 	<?php foreach($posts as $p):?>
-		<?php
+		<?php 
 			if ($i == 0) {
 				$class = 'item first';
-			}
+			} 
 			elseif ($i == $len - 1) {
 				$class = 'item last';
 			}
 			else {
 				$class = 'item';
 			}
-			$i++;
+			$i++;		
 		?>
 	<li class="<?php echo $class;?>">
 		<span><a href="<?php echo $p->url?>"><?php echo $p->title ?></a></span> on <span><?php echo date('d F Y', $p->date)?></span> - Posted in <span><?php echo $p->tag ?></span>
