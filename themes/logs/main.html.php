@@ -39,7 +39,7 @@
 			<span class="newer" >&laquo; <a href="?page=<?php echo $page-1?>" rel="prev">Plus récent</a></span>
 		<?php endif;?>
 		<?php if (!empty($pagination['next'])):?>
-			<span class="older" ><a href="?page=<?php echo $page+1?>" rel="next">Plus ancient</a> &raquo;</span>
+			<span class="older" ><a href="?page=<?php echo $page+1?>" rel="next">Plus ancien</a> &raquo;</span>
 		<?php endif;?>
 	</div>
 <?php endif;?>
