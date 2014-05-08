@@ -888,7 +888,7 @@ function recent_comments(){
 	$disqus = config('disqus.shortname');
 	$script = <<<EOF
 		<script type="text/javascript">
-			var heading ='<h3>Comment(s)</h3>';
+			var heading ='<h3>Commentaire(s)</h3>';
 			document.write(heading);
 		</script>
 		<script type="text/javascript" src="//{$disqus}.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=48&excerpt_length=200&hide_mods=0"></script>
