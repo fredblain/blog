@@ -66,7 +66,7 @@ post('/login', function() {
 			config('views.root', 'system/admin/views');
 
 			render('login',array(
-				'head_contents' => head_contents('Login - ' . blog_title(), 'Authentification sur ' .blog_title(), site_url()),
+				'head_contents' => head_contents('Login - ' . blog_title(), 'Login page on ' .blog_title(), site_url()),
 				'error' => '<ul>' . $log . '</ul>',
 				'bodyclass' => 'editprofile',
 				'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Login'
@@ -76,16 +76,16 @@ post('/login', function() {
 	else {
 		$message['error'] = '';
 		if(empty($user)) {
-			$message['error'] .= '<li>Le champ "utilisateur" est requis.</li>';
+			$message['error'] .= '<li>User field is required.</li>';
 		}
 		if (empty($pass)) {
-			$message['error'] .= '<li>Le champ "mot de passe" est requis.</li>';
+			$message['error'] .= '<li>Password field is required.</li>';
 		}
 
 		config('views.root', 'system/admin/views');
 
 		render('login',array(
-			'head_contents' => head_contents('Login - ' . blog_title(), 'Authentification sur ' .blog_title(), site_url()),
+			'head_contents' => head_contents('Login - ' . blog_title(), 'Login page on ' .blog_title(), site_url()),
 			'error' => '<ul>' . $message['error'] . '</ul>',
 			'username' => $user,
 			'password' => $pass,
@@ -161,7 +161,7 @@ get('/:year/:month/:name/edit', function($year, $month, $name){
 
 		if($user === $current->author || $role === 'admin') {
 			render('edit-post',array(
-				'head_contents' => head_contents('Editer le billet - ' . blog_title(), blog_description(), site_url()),
+				'head_contents' => head_contents('Edit post - ' . blog_title(), blog_description(), site_url()),
 				'p' => $current,
 				'bodyclass' => 'editpost',
 				'breadcrumb' => '<span typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="' . site_url() .  '">' .config('breadcrumb.home'). '</a></span> &#187; '. $current->tagb . ' &#187; ' . $current->title
@@ -203,18 +203,18 @@ post('/:year/:month/:name/edit', function() {
 	else {
 		$message['error'] = '';
 		if(empty($title)) {
-			$message['error'] .= '<li>Un titre est requis.</li>';
+			$message['error'] .= '<li>Title field is required.</li>';
 		}
 		if (empty($tag)) {
-			$message['error'] .= '<li>Le champ "tag" ne doit pas être vide.</li>';
+			$message['error'] .= '<li>Tag field is required.</li>';
 		}
 		if (empty($content)) {
-			$message['error'] .= '<li>Le billet ne peut être vide de contenu.</li>';
+			$message['error'] .= '<li>Content field is required.</li>';
 		}
 		config('views.root', 'system/admin/views');
 
 		render('edit-post',array(
-			'head_contents' => head_contents('Editer le billet - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Edit post - ' . blog_title(), blog_description(), site_url()),
 			'error' => '<ul>' . $message['error'] . '</ul>',
 			'oldfile' => $oldfile,
 			'postTitle' => $title,
@@ -222,7 +222,7 @@ post('/:year/:month/:name/edit', function() {
 			'postUrl' => $url,
 			'postContent' => $content,
 			'bodyclass' => 'editpost',
-			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Editer le billet'
+			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Edit post'
 		));
 	}
 
@@ -248,7 +248,7 @@ get('/:year/:month/:name/delete', function($year, $month, $name){
 
 		if($user === $current->author || $role === 'admin') {
 			render('delete-post',array(
-				'head_contents' => head_contents('Supprimer le billet - ' . blog_title(), blog_description(), site_url()),
+				'head_contents' => head_contents('Delete post - ' . blog_title(), blog_description(), site_url()),
 				'p' => $current,
 				'bodyclass' => 'deletepost',
 				'breadcrumb' => '<span typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="' . site_url() .  '">' .config('breadcrumb.home'). '</a></span> &#187; '. $current->tagb . ' &#187; ' . $current->title
@@ -300,26 +300,26 @@ get('/author/:profile', function($profile){
 
 	if(empty($posts) || $page < 1){
 		render('profile',array(
-			'head_contents' => head_contents('Profil pour :  '. $bio->title .' - ' . blog_title(), 'Page de profil et tous les billets par ' . $bio->title . ' sur ' . blog_title() . '.', site_url() . 'author/' . $profile),
+			'head_contents' => head_contents('Profile for:  '. $bio->title .' - ' . blog_title(), 'Profile page and all posts by ' . $bio->title . ' on ' . blog_title() . '.', site_url() . 'author/' . $profile),
 			'page' => $page,
 			'posts' => null,
 			'bio' => $bio->body,
 			'name' => $bio->title,
 			'bodyclass' => 'inprofile',
-			'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Profil pour : ' . $bio->title,
+			'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Profile for: ' . $bio->title,
 			'pagination' => has_pagination($total, $perpage, $page)
 		));
 		die;
 	}
 
     render('profile',array(
-		'head_contents' => head_contents('Profile pour :  '. $bio->title .' - ' . blog_title(), 'Page de profil et tous les billets par ' . $bio->title . ' sur ' . blog_title() . '.', site_url() . 'author/' . $profile),
+		'head_contents' => head_contents('Profile for:  '. $bio->title .' - ' . blog_title(), 'Profile page and all posts by ' . $bio->title . ' on ' . blog_title() . '.', site_url() . 'author/' . $profile),
     	'page' => $page,
 		'posts' => $posts,
 		'bio' => $bio->body,
 		'name' => $bio->title,
 		'bodyclass' => 'inprofile',
-		'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Profil pour : ' . $bio->title,
+		'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Profile for: ' . $bio->title,
 		'pagination' => has_pagination($total, $perpage, $page)
 	));
 });
@@ -331,9 +331,9 @@ get('/edit/profile', function(){
 
 		config('views.root', 'system/admin/views');
 		render('edit-profile',array(
-			'head_contents' => head_contents('Editer le profil - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Edit profile - ' . blog_title(), blog_description(), site_url()),
 			'bodyclass' => 'editprofile',
-			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Editer le profil',
+			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Edit profile',
 		));
 	}
 	else {
@@ -354,20 +354,20 @@ post('/edit/profile', function() {
 	else {
 		$message['error'] = '';
 		if(empty($title)) {
-			$message['error'] .= '<li>Un titre est requis.</li>';
+			$message['error'] .= '<li>Title field is required.</li>';
 		}
 		if (empty($content)) {
-			$message['error'] .= '<li>La page ne peut être vide de contenu.</li>';
+			$message['error'] .= '<li>Content field is required.</li>';
 		}
 		config('views.root', 'system/admin/views');
 
 		render('edit-profile',array(
-			'head_contents' => head_contents('Editer le profil - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Edit profile - ' . blog_title(), blog_description(), site_url()),
 			'error' => '<ul>' . $message['error'] . '</ul>',
 			'postTitle' => $title,
 			'postContent' => $content,
 			'bodyclass' => 'editprofile',
-			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Editer le profil'
+			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Edit profile'
 		));
 	}
 
@@ -407,8 +407,8 @@ get('/admin/posts', function () {
 			if($tl){ $tagline = ' - ' . $tl;} else {$tagline = '';}
 
 			render('posts-list',array(
-				'head_contents' => head_contents('Tous les billets du blog - ' . blog_title(), blog_description(), site_url()),
-				'heading' => 'Tous les billets du blog',
+				'head_contents' => head_contents('All blog posts - ' . blog_title(), blog_description(), site_url()),
+				'heading' => 'All blog posts',
 				'page' => $page,
 				'posts' => $posts,
 				'bodyclass' => 'all-posts',
@@ -418,7 +418,7 @@ get('/admin/posts', function () {
 		}
 		else {
 			render('denied',array(
-				'head_contents' => head_contents('Tous les billets du blog - ' . blog_title(), blog_description(), site_url()),
+				'head_contents' => head_contents('All blog posts - ' . blog_title(), blog_description(), site_url()),
 				'bodyclass' => 'denied',
 				'breadcrumb' => '',
 			));
@@ -458,14 +458,14 @@ get('/admin/mine', function(){
 
 		if(empty($posts) || $page < 1){
 			render('user-posts',array(
-				'head_contents' => head_contents('Mes billets du blog - ' . blog_title(), blog_description(), site_url()),
+				'head_contents' => head_contents('My blog posts - ' . blog_title(), blog_description(), site_url()),
 				'page' => $page,
 				'heading' => 'My posts',
 				'posts' => null,
 				'bio' => $bio->body,
 				'name' => $bio->title,
 				'bodyclass' => 'userposts',
-				'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Profil pour : ' . $bio->title,
+				'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Profile for: ' . $bio->title,
 				'pagination' => has_pagination($total, $perpage, $page)
 			));
 			die;
@@ -479,7 +479,7 @@ get('/admin/mine', function(){
 			'bio' => $bio->body,
 			'name' => $bio->title,
 			'bodyclass' => 'userposts',
-			'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Profil pour : ' . $bio->title,
+			'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Profile for: ' . $bio->title,
 			'pagination' => has_pagination($total, $perpage, $page)
 		));
 	}
@@ -628,22 +628,22 @@ post('/:static/edit', function() {
 	else {
 		$message['error'] = '';
 		if(empty($title)) {
-			$message['error'] .= '<li>Un titre est requis.</li>';
+			$message['error'] .= '<li>Title field is required.</li>';
 		}
 		if (empty($content)) {
-			$message['error'] .= '<li>La page ne peut être vide de contenu.</li>';
+			$message['error'] .= '<li>Content field is required.</li>';
 		}
 		config('views.root', 'system/admin/views');
 
 		render('edit-page',array(
-			'head_contents' => head_contents('Editer la page - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Edit page - ' . blog_title(), blog_description(), site_url()),
 			'error' => '<ul>' . $message['error'] . '</ul>',
 			'oldfile' => $oldfile,
 			'postTitle' => $title,
 			'postUrl' => $url,
 			'postContent' => $content,
 			'bodyclass' => 'editpage',
-			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Editer la page'
+			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Edit page'
 		));
 	}
 
@@ -664,7 +664,7 @@ get('/:static/delete', function($static){
 		$post = $post[0];
 
 		render('delete-page',array(
-			'head_contents' => head_contents('Supprimer la page - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Delete page - ' . blog_title(), blog_description(), site_url()),
 			'bodyclass' => 'deletepage',
 			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; ' . $post->title,
 			'p' => $post,
@@ -694,9 +694,9 @@ get('/add/post', function(){
 		config('views.root', 'system/admin/views');
 
 		render('add-post',array(
-			'head_contents' => head_contents('Créer un bilelt - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Add post - ' . blog_title(), blog_description(), site_url()),
 			'bodyclass' => 'addpost',
-			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Créer un billet'
+			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Add post'
 		));
 	}
 	else {
@@ -725,24 +725,24 @@ post('/add/post', function(){
 	else {
 		$message['error'] = '';
 		if(empty($title)) {
-			$message['error'] .= '<li>Un titre est requis.</li>';
+			$message['error'] .= '<li>Title field is required.</li>';
 		}
 		if (empty($tag)) {
-			$message['error'] .= '<li>Le champ "tag" ne peut être vide.</li>';
+			$message['error'] .= '<li>Tag field is required.</li>';
 		}
 		if (empty($content)) {
-			$message['error'] .= '<li>Le billet ne peut être vide de contenu.</li>';
+			$message['error'] .= '<li>Content field is required.</li>';
 		}
 		config('views.root', 'system/admin/views');
 		render('add-post',array(
-			'head_contents' => head_contents('Créer le billet - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Add post - ' . blog_title(), blog_description(), site_url()),
 			'error' => '<ul>' . $message['error'] . '</ul>',
 			'postTitle' => $title,
 			'postTag' => $tag,
 			'postUrl' => $url,
 			'postContent' => $content,
 			'bodyclass' => 'addpost',
-			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Créer le billet'
+			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Add post'
 		));
 	}
 
@@ -756,9 +756,9 @@ get('/add/page', function(){
 		config('views.root', 'system/admin/views');
 
 		render('add-page',array(
-			'head_contents' => head_contents('Créer une page - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Add page - ' . blog_title(), blog_description(), site_url()),
 			'bodyclass' => 'addpage',
-			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Créer une page'
+			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Add page'
 		));
 	}
 	else {
@@ -785,20 +785,20 @@ post('/add/page', function(){
 	else {
 		$message['error'] = '';
 		if(empty($title)) {
-			$message['error'] .= '<li>Un titre est requis.</li>';
+			$message['error'] .= '<li>Title field is required.</li>';
 		}
 		if (empty($content)) {
-			$message['error'] .= '<li>La page ne peut être vide de contenu.</li>';
+			$message['error'] .= '<li>Content field is required.</li>';
 		}
 		config('views.root', 'system/admin/views');
 		render('add-page',array(
-			'head_contents' => head_contents('Créer la page - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Add page - ' . blog_title(), blog_description(), site_url()),
 			'error' => '<ul>' . $message['error'] . '</ul>',
 			'postTitle' => $title,
 			'postUrl' => $url,
 			'postContent' => $content,
 			'bodyclass' => 'addpage',
-			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Créer la page'
+			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Add page'
 		));
 	}
 
@@ -809,9 +809,9 @@ get('/admin/import',function(){
 	if(login()) {
 		config('views.root', 'system/admin/views');
 		render('import', array(
-			'head_contents' => head_contents('Importer des flux - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Import feed - ' . blog_title(), blog_description(), site_url()),
 			'bodyclass' => 'importfeed',
-			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Importer des flux'
+			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Import feed'
 		));
 	}
 	else {
@@ -836,23 +836,23 @@ post('/admin/import', function() {
 			config('views.root', 'system/admin/views');
 
 			render('import',array(
-				'head_contents' => head_contents('Importer des flux - ' . blog_title(), blog_description(), site_url()),
+				'head_contents' => head_contents('Import feed - ' . blog_title(), blog_description(), site_url()),
 				'error' => '<ul>' . $log . '</ul>',
 				'bodyclass' => 'editprofile',
-				'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Importer des flux'
+				'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Import feed'
 			));
 		}
 	}
 	else {
 		$message['error'] = '';
 		if(empty($url)) {
-			$message['error'] .= '<li>Vous devez spécifier l\'url des flux.</li>';
+			$message['error'] .= '<li>You need to specify the feed url.</li>';
 		}
 
 		config('views.root', 'system/admin/views');
 
 		render('import',array(
-			'head_contents' => head_contents('Importer les flux - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Import feed - ' . blog_title(), blog_description(), site_url()),
 			'error' => '<ul>' . $message['error'] . '</ul>',
 			'url' => $url,
 			'bodyclass' => 'editprofile',
@@ -867,9 +867,9 @@ get('/admin/backup',function(){
 	if(login()) {
 		config('views.root', 'system/admin/views');
 		render('backup', array(
-			'head_contents' => head_contents('Sauvegarder les contenus - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Backup content - ' . blog_title(), blog_description(), site_url()),
 			'bodyclass' => 'backup',
-			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Sauvegarder'
+			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Backup'
 		));
 	}
 	else {
@@ -884,9 +884,9 @@ get('/admin/backup-start',function(){
 	if(login()) {
 		config('views.root', 'system/admin/views');
 		render('backup-start', array(
-			'head_contents' => head_contents('Sauvegarde lancée - ' . blog_title(), blog_description(), site_url()),
+			'head_contents' => head_contents('Backup content started - ' . blog_title(), blog_description(), site_url()),
 			'bodyclass' => 'startbackup',
-			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Sauvegarde lancée'
+			'breadcrumb' => '<a href="' . site_url() . '">' .config('breadcrumb.home'). '</a> &#187; Backup started'
 		));
 	}
 	else {
@@ -914,11 +914,11 @@ get('/tag/:tag',function($tag){
 	}
 
     render('main',array(
-		'head_contents' => head_contents('Billets taggés : ' . $tag .' - ' . blog_title(), 'Tous les billets taggés : ' . $tag . ' sur '. blog_title() . '.', site_url() . 'tag/' . $tag),
+		'head_contents' => head_contents('Posts tagged: ' . $tag .' - ' . blog_title(), 'All posts tagged: ' . $tag . ' on '. blog_title() . '.', site_url() . 'tag/' . $tag),
     	'page' => $page,
 		'posts' => $posts,
 		'bodyclass' => 'intag',
-		'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Billets taggés : ' . $tag,
+		'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Posts tagged: ' . $tag,
 		'pagination' => has_pagination($total, $perpage, $page)
 	));
 });
@@ -958,11 +958,11 @@ get('/archive/:req',function($req){
 	}
 
     render('main',array(
-		'head_contents' => head_contents('Archive pour : ' . $timestamp .' - ' . blog_title(), 'Page d\'archivage pour : ' . $timestamp . ' sur ' . blog_title() . '.', site_url() . 'archive/' . $req),
+		'head_contents' => head_contents('Archive for: ' . $timestamp .' - ' . blog_title(), 'Archive page for: ' . $timestamp . ' on ' . blog_title() . '.', site_url() . 'archive/' . $req),
     	'page' => $page,
 		'posts' => $posts,
 		'bodyclass' => 'inarchive',
-		'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Archive pour : ' . $timestamp,
+		'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Archive for: ' . $timestamp,
 		'pagination' => has_pagination($total, $perpage, $page)
 	));
 });
@@ -985,11 +985,11 @@ get('/search/:keyword', function($keyword){
 	}
 
     render('main',array(
-		'head_contents' => head_contents('Résultats de recherche pour : ' . $keyword . ' - ' . blog_title(), 'Résultat de recherche pour for : ' . $keyword . ' sur '. blog_title() . '.', site_url() . 'search/' . $keyword),
+		'head_contents' => head_contents('Search results for: ' . $keyword . ' - ' . blog_title(), 'Search results for: ' . $keyword . ' on '. blog_title() . '.', site_url() . 'search/' . $keyword),
     	'page' => $page,
 		'posts' => $posts,
 		'bodyclass' => 'insearch',
-		'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Résultats de recherche pour : ' . $keyword,
+		'breadcrumb' => '<a href="' . site_url() .  '">' .config('breadcrumb.home'). '</a> &#187; Search results for: ' . $keyword,
 		'pagination' => has_pagination($total, $perpage, $page)
 	));
 
