@@ -16,18 +16,18 @@ function user($key, $user=null) {
 function session($user, $pass, $str = null) {
 		$user_file = 'config/users/' . $user . '.ini';
 		$user_pass = user('password', $user);
-
+		
 		if(file_exists($user_file)) {
 			if($pass === $user_pass) {
 				$_SESSION['user'] = $user;
 				header('location: admin');
 			}
 			else {
-				return $str = '<li>Votre nom d\'utilisateur et votre mot-de-passe ne correspondent pas.</li>';
+				return $str = '<li>Your username and password mismatch.</li>';
 			}
 		}
 		else {
-			return $str = '<li>Nom d\'utilisateur inconnu.</li>';
+			return $str = '<li>Username not found in our record.</li>';
 		}
 }
 
@@ -46,7 +46,7 @@ function edit_post($title, $tag, $url, $content, $oldfile, $destination = null) 
 	$post_url = str_replace('--', '-',$post_url);
 	$post_url = rtrim(ltrim($post_url, ',\.\-'), ',\.\-');
 	$post_content = '<!--t ' . $post_title . ' t-->' . "\n\n" . $content;
-
+		
 	if(!empty($post_title) && !empty($post_tag) && !empty($post_url) && !empty($post_content)) {
 		if(get_magic_quotes_gpc()) {
 			$post_content = stripslashes($post_content);
@@ -59,19 +59,19 @@ function edit_post($title, $tag, $url, $content, $oldfile, $destination = null) 
 			rename($oldfile, $newfile);
 			file_put_contents($newfile, print_r($post_content, true));
 		}
-
+		
 		$replaced = substr($oldurl[0], 0,strrpos($oldurl[0], '/')) . '/';
 		$dt = str_replace($replaced,'',$oldurl[0]);
 		$t = str_replace('-','',$dt);
 		$time = new DateTime($t);
 		$timestamp= $time->format("Y-m-d");
-
+		
 		// The post date
 		$postdate = strtotime($timestamp);
-
+		
 		// The post URL
 		$posturl = site_url().date('Y/m', $postdate).'/'.$post_url;
-
+		
 		if ($destination == 'post') {
 			header("Location: $posturl");
 		}
@@ -79,9 +79,9 @@ function edit_post($title, $tag, $url, $content, $oldfile, $destination = null) 
 			$redirect = site_url() . $destination;
 			header("Location: $redirect");
 		}
-
+		
 	}
-
+		
 }
 
 // Edit static page
@@ -96,7 +96,7 @@ function edit_page($title, $url, $content, $oldfile, $destination = null) {
 	$post_url = str_replace('--', '-',$post_url);
 	$post_url = rtrim(ltrim($post_url, ',\.\-'), ',\.\-');
 	$post_content = '<!--t ' . $post_title . ' t-->' . "\n\n" . $content;
-
+		
 	if(!empty($post_title) && !empty($post_url) && !empty($post_content)) {
 		if(get_magic_quotes_gpc()) {
 			$post_content = stripslashes($post_content);
@@ -109,9 +109,9 @@ function edit_page($title, $url, $content, $oldfile, $destination = null) {
 			rename($oldfile, $newfile);
 			file_put_contents($newfile, print_r($post_content, true));
 		}
-
+		
 		$posturl = site_url() . $post_url;
-
+		
 		if ($destination == 'post') {
 			header("Location: $posturl");
 		}
@@ -119,9 +119,9 @@ function edit_page($title, $url, $content, $oldfile, $destination = null) {
 			$redirect = site_url() . $destination;
 			header("Location: $redirect");
 		}
-
+		
 	}
-
+		
 }
 
 // Add blog post
@@ -137,7 +137,7 @@ function add_post($title, $tag, $url, $content, $user) {
 	$post_url = str_replace('--', '-',$post_url);
 	$post_url = rtrim(ltrim($post_url, ' \,\.\-'), ' \,\.\-');
 	$post_content = '<!--t ' . $post_title . ' t-->' . "\n\n" . $content;
-
+	
 	if(!empty($post_title) && !empty($post_tag) && !empty($post_url) && !empty($post_content)) {
 		if(get_magic_quotes_gpc()) {
 			$post_content = stripslashes($post_content);
@@ -152,9 +152,9 @@ function add_post($title, $tag, $url, $content, $user) {
 			file_put_contents($dir . $filename, print_r($post_content, true));
 		}
 		$redirect = site_url() . 'admin/mine';
-		header("Location: $redirect");
+		header("Location: $redirect");	
 	}
-
+	
 }
 
 // Add static page
@@ -167,7 +167,7 @@ function add_page($title, $url, $content) {
 	$post_url = str_replace('--', '-',$post_url);
 	$post_url = rtrim(ltrim($post_url, ',\.\-'), ',\.\-');
 	$post_content = '<!--t ' . $post_title . ' t-->' . "\n\n" . $content;
-
+	
 	if(!empty($post_title) && !empty($post_url) && !empty($post_content)) {
 		if(get_magic_quotes_gpc()) {
 			$post_content = stripslashes($post_content);
@@ -184,7 +184,7 @@ function add_page($title, $url, $content) {
 		$redirect = site_url() . 'admin';
 		header("Location: $redirect");
 	}
-
+	
 }
 
 // Delete blog post
@@ -199,7 +199,7 @@ function delete_post($file, $destination) {
 		else {
 			$redirect = site_url() . $destination;
 			header("Location: $redirect");
-		}
+		}	
 	}
 }
 
@@ -215,7 +215,7 @@ function delete_page($file, $destination) {
 		else {
 			$redirect = site_url() . $destination;
 			header("Location: $redirect");
-		}
+		}			
 	}
 }
 
@@ -224,7 +224,7 @@ function edit_profile($title, $content, $user) {
 
 	$user_title = $title;
 	$user_content = '<!--t ' . $user_title . ' t-->' . "\n\n" . $content;
-
+	
 	if(!empty($user_title) && !empty($user_content)) {
 		if(get_magic_quotes_gpc()) {
 			$user_content = stripslashes($user_content);
@@ -239,9 +239,9 @@ function edit_profile($title, $content, $user) {
 			file_put_contents($filename, print_r($user_content, true));
 		}
 		$redirect = site_url() . 'author/' . $user;
-		header("Location: $redirect");
+		header("Location: $redirect");			
 	}
-
+	
 }
 
 // Import RSS feed
@@ -257,7 +257,7 @@ function migrate($title, $time, $tags, $content, $url, $user, $source) {
 	$post_url = str_replace('--', '-',$post_url);
 	$post_url = rtrim(ltrim($post_url, ',\.\-'), ',\.\-');
 	if(!empty($source)) {
-		$post_content = '<!--t ' . $post_title . ' t-->' . "\n\n" . $content . "\n\n" . 'Source : <a target="_blank" href="' . $source . '">' . $title . '</a>';
+		$post_content = '<!--t ' . $post_title . ' t-->' . "\n\n" . $content . "\n\n" . 'Source: <a target="_blank" href="' . $source . '">' . $title . '</a>';
 	}
 	else {
 		$post_content = '<!--t ' . $post_title . ' t-->' . "\n\n" . $content;
@@ -275,15 +275,15 @@ function migrate($title, $time, $tags, $content, $url, $user, $source) {
 			mkdir($dir, 0777, true);
 			file_put_contents($dir . $filename, print_r($post_content, true));
 		}
-
+		
 		$redirect = site_url() . 'admin/mine';
-		header("Location: $redirect");
+		header("Location: $redirect");	
 	}
-
+	
 }
 
 // Fetch RSS feed
-function get_feed($feed_url, $credit, $message=null) {
+function get_feed($feed_url, $credit, $message=null) {  
     $source = file_get_contents($feed_url);
     $feed = new SimpleXmlElement($source);
 	if(!empty($feed->channel->item)) {
@@ -297,7 +297,7 @@ function get_feed($feed_url, $credit, $message=null) {
 				$content = preg_replace('#<br\s*/?>#i', "\n", $descriptionB);
 			}
 			else {
-				return $str = '<li>Lecture impossible des flux.</li>';
+				return $str = '<li>Can not read the feed content.</li>';
 			}
 			$time = new DateTime($entry->pubDate);
 			$timestamp= $time->format("Y-m-d H:i:s");
@@ -322,10 +322,10 @@ function get_feed($feed_url, $credit, $message=null) {
 		}
 	}
 	else {
-		return $str= '<li>Flux non supportés.</li>';
+		return $str= '<li>Unsupported feed.</li>';
 	}
-
-}
+	
+}  
 
 // Get recent posts by user
 function get_recent_posts() {
@@ -333,12 +333,12 @@ function get_recent_posts() {
 		$posts = get_profile($_SESSION['user'], 1, 5);
 		if(!empty($posts)) {
 			echo '<table class="post-list">';
-			echo '<tr class="head"><th>Titre</th><th>Publié le</th><th>Tag(s)</th><th>Opérations</th></tr>';
+			echo '<tr class="head"><th>Title</th><th>Published</th><th>Tag</th><th>Operations</th></tr>';
 			$i = 0; $len = count($posts);
 			foreach($posts as $p) {
 				if ($i == 0) {
 					$class = 'item first';
-				}
+				} 
 				elseif ($i == $len - 1) {
 					$class = 'item last';
 				}
@@ -350,7 +350,7 @@ function get_recent_posts() {
 				echo '<td><a target="_blank" href="' . $p->url . '">' . $p->title . '</a></td>';
 				echo '<td>' . date('d F Y', $p->date) . '</td>';
 				echo '<td>' . $p->tag . '</td>';
-				echo '<td><a href="' . $p->url . '/edit?destination=admin">Éditer</a> <a href="' . $p->url . '/delete?destination=admin">Supprimer</a></td>';
+				echo '<td><a href="' . $p->url . '/edit?destination=admin">Edit</a> <a href="' . $p->url . '/delete?destination=admin">Delete</a></td>';
 				echo '</tr>';
 			}
 			echo '</table>';
@@ -365,12 +365,12 @@ function get_recent_pages() {
 		if(!empty($posts)) {
 			krsort($posts);
 			echo '<table class="post-list">';
-			echo '<tr class="head"><th>Titre</th><th>Opérations</th></tr>';
+			echo '<tr class="head"><th>Title</th><th>Operations</th></tr>';
 			$i = 0; $len = count($posts);
 			foreach($posts as $p) {
 				if ($i == 0) {
 					$class = 'item first';
-				}
+				} 
 				elseif ($i == $len - 1) {
 					$class = 'item last';
 				}
@@ -380,7 +380,7 @@ function get_recent_pages() {
 				$i++;
 				echo '<tr class="' . $class . '">';
 				echo '<td><a target="_blank" href="' . $p->url . '">' . $p->title . '</a></td>';
-				echo '<td><a href="' . $p->url . '/edit?destination=admin">Éditer</a> <a href="' . $p->url . '/delete?destination=admin">Supprimer</a></td>';
+				echo '<td><a href="' . $p->url . '/edit?destination=admin">Edit</a> <a href="' . $p->url . '/delete?destination=admin">Delete</a></td>';
 				echo '</tr>';
 			}
 			echo '</table>';
@@ -395,13 +395,13 @@ function get_backup_files () {
 		if(!empty($files)) {
 			krsort($files);
 			echo '<table class="backup-list">';
-			echo '<tr class="head"><th>Nom de fichier</th><th>Date</th><th>Opérations</th></tr>';
+			echo '<tr class="head"><th>Filename</th><th>Date</th><th>Operations</th></tr>';
 			$i = 0; $len = count($files);
 			foreach($files as $file) {
-
+			
 				if ($i == 0) {
 					$class = 'item first';
-				}
+				} 
 				elseif ($i == $len - 1) {
 					$class = 'item last';
 				}
@@ -409,31 +409,31 @@ function get_backup_files () {
 					$class = 'item';
 				}
 				$i++;
-
+				
 				// Extract the date
 				$arr = explode('_', $file);
-
+				
 				// Replaced string
 				$replaced = substr($arr[0], 0,strrpos($arr[0], '/')) . '/';
-
+				
 				$name = str_replace($replaced,'',$file);
-
+				
 				$date = str_replace('.zip','',$arr[1]);
 				$t = str_replace('-', '', $date);
 				$time = new DateTime($t);
 				$timestamp= $time->format("D, d F Y, H:i:s");
-
+				
 				$url = site_url() . $file;
 				echo '<tr class="' . $class . '">';
 				echo '<td>' . $name . '</td>';
 				echo '<td>' . $timestamp . '</td>';
-				echo '<td><a target="_blank" href="' . $url . '">Télécharger</a> <form method="GET"><input type="hidden" name="file" value="' . $file . '"/><input type="submit" name="submit" value="Delete"/></form></td>';
+				echo '<td><a target="_blank" href="' . $url . '">Download</a> <form method="GET"><input type="hidden" name="file" value="' . $file . '"/><input type="submit" name="submit" value="Delete"/></form></td>';
 				echo '</tr>';
 			}
 			echo '</table>';
 		}
 		else {
-			echo 'Pas de sauvegarde disponible !';
+			echo 'No available backup!';
 		}
 	}
 }
