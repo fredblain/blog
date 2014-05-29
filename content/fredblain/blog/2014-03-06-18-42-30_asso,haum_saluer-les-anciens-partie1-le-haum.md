@@ -58,5 +58,5 @@ Quelques liens utiles sur le HAUM:
   [11]: http://talks.haum.org
   [12]: http://www.twitter.com/haum72
   [13]: https://github.com/haum
-  [14]: http://webchat.freenode.net/
+  [14]: http://irc.lc/freenode/haum
   [15]: http://lists.matael.org/mailman/listinfo/haum_hackerspace
