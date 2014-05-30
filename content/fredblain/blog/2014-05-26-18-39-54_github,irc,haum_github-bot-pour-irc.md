@@ -1,6 +1,6 @@
 <!--t Activer un Github hook pour IRC t-->
 
-Nous avons récemment mis en place au HAUM des Github hooks (ou services) sur nos principaux [dépôts Git][1], afin que les membres de l'association soient notifiés des évènements intéressants y survenant (push, pull-request, commentaires, autres) et ce, directement sur le [chan IRC][2] de l'association.
+Nous avons récemment mis en place au HAUM des Github hooks (ou services) sur nos principaux [dépôts Git][1], afin que les membres de l'association soient automatiquement notifiés sur [IRC][2] des évènements intéressants y survenant (push, pull-request, commentaires, autres).
 
 #Comment ça fonctionne ?
 
@@ -25,14 +25,106 @@ Alors certains détracteurs pourraient dire que ce service fait doublons avec la
  2. mais l'un n'empêche pas l'autre ;
  3. et puis tous les membres de l'association n'utilisent pas GitHub ;
  4. et entre les dépôts privés, professionnels, associatifs & co, certains d'entre nous ont choisis de désactiver les notifications mail, n'en recevant que trop déjà...
+ 5. raison X ou Y ;
+ 6. ou encore simple envie de vouloir savoir comment ça marche ;)
 
+#Activer le service pour IRC
 
+Tout cela n'est en fait pas bien compliqué, c'est même très simple puisque nous avons tout ce qu'il faut à disposition !
+Github a en effet fait le plus dur, il nous reste plus qu'à cliquer, ou presque...
 
-#Activer un webservice Github pour IRC
+Pour commencer, rendez-vous dans les paramètres de votre dépôts, et allez ensuite dans "webhooks & services".
+De là, vous avez le choix :  soit vous créez un "webhook" ou alors vous ajoutez un service.
 
-Tout cela n'est en fait pas bien compliqué, Github mettant à disposition tout le nécessaire, vous verrez.
-Dans le cas d'un Github Hook pour IRC, il suffit 
-Pour activer un hook IRC, rendez-vous dans les paramètres de votre dépôts, section "webhooks & services"
+Recherchez et ajoutez le service pour IRC. Vous devriez désormais être dans la page de configuration de ce service.
+Toutes les options permettant de personnaliser votre service y sont documentées.
+Personnellement, je vous conseille de cocher `"Message without join"` afin de ne pas être polluer par les annonces de (dé)connexion de votre bot, et de laisser décocher `"Long url"`. Cela activera le service [Git.io][3] qui est un raccourcisseur d'url qui vous évitera une notification trop verbeuse.
+
+On vous dit alors que vous pouvez diagnostiquer votre service afin de valider son bon fonctionnement, avec la commande :
+
+    curl -u "USERNAME" -in https://api.github.com/repos/USERNAME/REPONAME/hooks
+
+Ainsi, si on teste cette commande sur le dépôt du site Internet du HAUM, on obtient :
+
+    
+
+    [
+          {
+            "url": "https://api.github.com/repos/haum/website/hooks/2296461",
+            "test_url": "https://api.github.com/repos/haum/website/hooks/2296461/test",
+            "id": 2296461,
+            "name": "irc",
+            "active": true,
+            "events": [
+              "push",
+              "issues",
+              "issue_comment",
+              "pull_request"
+            ],
+            "config": {
+              "server": "chat.freenode.net",
+              "port": "6667",
+              "room": "#haum",
+              "nick": "GitHub_Bot",
+              "branch_regexes": "",
+              "nickserv_password": "",
+              "password": "",
+              "message_without_join": "1"
+            },
+            "last_response": {
+              "code": 200,
+              "status": "active",
+              "message": "OK"
+            },
+            "updated_at": "2014-05-28T17:48:18Z",
+            "created_at": "2014-05-22T10:11:52Z"
+          }
+        ]
+
+Voyons de plus prêt ce que tout ça veut dire.
+
+    "url": "https://api.github.com/repos/haum/website/hooks/2296461",
+    "test_url": "https://api.github.com/repos/haum/website/hooks/2296461/test",
+    "id": 2296461,
+    "name": "irc",
+    "active": true,
+
+#TODO
+
+    "events": [
+    "push",
+    "issues",
+    "issue_comment",
+    "pull_request"
+    ],
+
+#TODO
+
+    "config": {
+    "server": "chat.freenode.net",
+    "port": "6667",
+    "room": "#haum",
+    "nick": "GitHub_Bot",
+    "branch_regexes": "",
+    "nickserv_password": "",
+    "password": "",
+    "message_without_join": "1"
+    },
+
+#TODO
+
+    "last_response": {
+    "code": 200,
+    "status": "active",
+     "message": "OK"
+    },
+
+#TODO
+
+    "updated_at": "2014-05-28T17:48:18Z",
+    "created_at": "2014-05-22T10:11:52Z"
+
+#TODO
 
 #Gérer la liste des évènements notifiés par GitHub
 
@@ -64,8 +156,10 @@ text
 
 
 ----------
-Ce billet en français est inspiré du billet de Rob Allen : ["Changing the GitHub IRC hooks notification events"][3].
+Ce billet en français est inspiré du billet de Rob Allen : ["Changing the GitHub IRC hooks notification events"][4].
+
 
   [1]: https://github.com/haum
   [2]: http://irc.lc/freenode/haum/
-  [3]: http://akrabat.com/computing/changing-the-github-irc-hooks-notification-events/
+  [3]: http://git.io
+  [4]: http://akrabat.com/computing/changing-the-github-irc-hooks-notification-events/
