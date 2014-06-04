@@ -12,13 +12,13 @@ La soirée n'était pas encore commencée que nous avions déjà au HAUM un prem
 
 C'est par ces mots simples que la soirée fut lancée par [Matael][4], dans un climat studieux et sérieux.
 
-Trois *talks* sont au programme de cette soirée : "*API SETRAM : Histoire de données*", "*Élections municipales 2014*", "*L'ouverture oui, mais après?*".
+Trois *talks* étaient au programme de cette soirée : "*API SETRAM : Histoire de données*", "*Élections municipales 2014*", "*L'ouverture oui, mais après?*".
 
 Le premier, assuré par Matael, co-fondateur et actuel président du HAUM, débute par une présentation rapide de ce dernier avant de rentrer dans le vif du sujet : ses travaux sur l'exploitation des données des transports publics de la ville du Mans (on salue au passage la SETRAM qui n'a pas jugé utile de se joindre à nous malgré nos multiples et courtoises sollicitations..).
 Dans sa présentation, Matael est revenu sur le fond de sa démarche et en présenta le résultat : [une carte interactive des lignes de bus et de tram de la SETRAM][5].
-Il est presque 19h, les premières questions ne se font pas attendre et on sent d'ores-et-déjà un certain intérêt sur ce genre d'initiatives passées, et sur de possibles actions futures.
+Il est presque 19h, les premières questions ne se font pas attendre et on sent d'ores-et-déjà un certain intérêt sur ce genre d'initiatives, et sur de possibles actions futures.
 
-Vient ensuite mon tour, je complète pendant quelques minutes les propos de Matael sur la démarche du HAUM en présentant le résultat d'un travail commun d'action citoyenne : l'exploitation des données des dernières élections municipales.
+Vient ensuite mon tour, je complète pendant quelques minutes les propos de Matael sur la démarche du HAUM en présentant le résultat d'un **travail commun d'action citoyenne** : l'exploitation des données des dernières élections municipales.
 L'occasion pour moi de mettre en avant les difficultés rencontrées, de pointer du doigt les aspects positifs (aussi) et négatifs (surtout) de l'ouverture des données par la ville du Mans dans sa version actuelle (validation obligatoire d'une licence avant tout accès aux données empêchant ainsi leur accès automatisé, description des jeux de données quasi-inexistante, etc.).
 
 Là encore, les questions affluent sur "*comment avez-vous trouvé ces données?*", "*à quoi cela ressemble-t-il?*" : les gens sont intéressés par la démarche, les étapes et réalisations techniques, autant que par le résultat final obtenu.
@@ -38,15 +38,16 @@ Pour plus d'informations sur ces deux premiers talks, sachez qu'ils sont entièr
 ----------
 
 
-Il est maintenant 19h30, on compte déjà de nombreux échanges et c'est dans ce contexte de dialogue entre auditeurs et orateurs que nous invitons Claire Gallon, animatrice de l'association [Libertic][10] à prendre la parole.
+Il est maintenant 19h30, on compte déjà de nombreux échanges et c'est dans ce contexte de dialogue entre auditeurs et orateurs que nous invitons Claire Gallon, animatrice de l'association [Libertic][10], à prendre la parole.
 
 Après un temps d'échange enrichissant à propos des deux talks précédents, Claire prend la parole.
 Elle nous propose un résumé sur l'évolution de l'opendata en France depuis 2011 et les actions de Libertic. Enfin, elle nous parle des "10 étapes de l'Opendata", venant confirmer la cohérence de l'action du HAUM sur Le Mans.
 Le dialogue, une fois de plus, qui suit la présentation et les échanges nous renseigne sur le profil des auditeurs.
 
 Le HAUM propose ensuite l'organisation d'un hackathon en partenariat avec la Ruche Numérique et d'autres acteurs : l'idée est bien accueillie et quasiment tous les participants semblent intéressés. Ce hackathon aura donc lieu !
-Il est 22 heures lorsque les échéanges, prolongés par un verre de l'amitié prennent fin.
-En résumé :
+Il est 22 heures lorsque les échanges, prolongés par un verre de l'amitié, prennent fin.
+
+###En résumé...
     
 Nous considérons que ce premier (et véritable) échange local sur le sujet de l'opendata est un franc succès.
 Un succès parce que l'affluence a dépassé nos espérances alors que l'organisation de tels évènements par le HAUM n'est pas encore rôdée.
