@@ -52,8 +52,9 @@ Nous considérons que ce premier (et véritable) échange local sur le sujet de 
 Un succès parce que l'affluence a dépassé nos espérances alors que l'organisation de tels évènements par le HAUM n'est pas encore rôdée.
     
 Les échanges, quoique timides dans un premier temps, se sont rapidement renforcés tout au long de la soirée et chacun a pu s'exprimer dès lors qu'il le souhaitait.
-C'est ainsi que plusieurs points de vue sont apparus et ont donné lieu à d'intéressants échanges entre les partisans inconditionnels et d'autres plus tempérés qui gardent notamment à l'esprit...hum...#TODO : droit d'accès et de réutilisation des données, coûts éventuels de mise à disposition, fréquence de mise-à-jour des jeux de données, etc.
-Une chose est sûre, chacun aura pu à l'occasion de cette soirée élargir et enrichir sa vision de l'écosystème "opendata" sur Le Mans et sa région, et preuve que l'initiative a eu du bon : tous se sont dits intéressés pour être recontactés directement si une manifestation autours de l'opendata était organisée au Mans.
+C'est ainsi que plusieurs points de vue sont apparus et ont donné lieu à d'intéressants échanges entre les pro-opendata et d'autres avis plus tempérés qui s'interrogent sur la mise en œuvre d'une telle démarche : droit d'accès et de réutilisation des données, coûts éventuels de mise à disposition, fréquence de mise-à-jour des jeux de données, etc.
+
+Une chose est sûre, chacun aura pu à l'occasion de cette soirée élargir et enrichir sa vision de l'écosystème "opendata" sur Le Mans et sa région, et preuve que l'initiative a eu du bon : tous se sont dits intéressés pour être recontactés si une manifestation opendata était organisée au Mans.
 Ce point, très important au regard des propos de Claire Gallon (faire vivre et animer une communauté, réaliser des actions...) est un second motif de satisfaction pour le HAUM : les citoyens manceaux et plus généralement sarthois sont intéressés et prêts à participer à notre initiative pour peu que l'occasion leur en soit donnée !
 Tâche à laquelle le HAUM va désormais travailler.
 
