@@ -75,7 +75,7 @@ Pour citer l'association [Framasoft][13] : "La route est longue, mais la voie es
 ----------
 
 
-(1) *Abdellatif Amar, élu de la ville du Mans (délégué aux Initiatives citoyennes et à l'Internet citoyen) et qui devait être présent initialement, s'est lui excusé de ne pouvoir être là.*
+(1) *Abdellatif Ammar, élu de la ville du Mans (délégué aux Initiatives citoyennes et à l'Internet citoyen) et qui devait être présent initialement, s'est lui excusé de ne pouvoir être là.*
 
 
   [1]: http://haum.org/
