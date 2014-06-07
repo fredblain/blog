@@ -1096,7 +1096,7 @@ function search() {
 	echo <<<EOF
 	<form id="search-form" method="get">
 		<input type="text" class="search-input" name="search" value="Rechercher" onfocus="if (this.value == 'Rechercher') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Rechercher';}">
-		<input type="submit" value="Rechercher" class="search-button">
+		<input type="submit" value="Go!" class="search-button">
 	</form>
 EOF;
 	if(isset($_GET['search'])) {

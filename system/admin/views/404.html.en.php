@@ -12,8 +12,8 @@
 </head>
 <body>
 	<div class="center message">
-		<h1>Désolé, cette page n'existe pas !</h1>
-		<p>Souhaitez-vous revenir à notre <a href="<?php echo site_url() ?>">page d'accueil</a> à la place ?</p>
+		<h1>This page doesn't exist!</h1>
+		<p>Would you like to try our <a href="<?php echo site_url() ?>">homepage</a> instead?</p>
 	</div>
 </body>
 </html>

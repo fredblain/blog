@@ -3,9 +3,9 @@
 	if(isset($_SESSION['user'])) {
 		$user = $_SESSION['user'];
 	}
-
+	
 	$filename = 'content/' . $user . '/author.md';
-
+	
 	if(file_exists($filename)) {
 		$content = file_get_contents($filename);
 		$arr = explode('t-->', $content);
@@ -22,7 +22,7 @@
 			$oldtitle = $user;
 			$oldcontent = 'Just another HTMLy user.';
 	}
-
+	
 ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo site_url() ?>system/admin/editor/css/editor.css" />
@@ -34,10 +34,10 @@
  <?php } ?>
 <div class="wmd-panel">
 <form method="POST">
-	Titre <span class="required">*</span> <br><input type="text" name="title" class="text <?php if (isset($postTitle)) { if (empty($postTitle)) { echo 'error';}} ?>" value="<?php echo $oldtitle?>"/><br><br>
+	Title <span class="required">*</span> <br><input type="text" name="title" class="text <?php if (isset($postTitle)) { if (empty($postTitle)) { echo 'error';}} ?>" value="<?php echo $oldtitle?>"/><br><br>
 	<div id="wmd-button-bar" class="wmd-button-bar"></div>
 	<textarea id="wmd-input" class="wmd-input <?php if (isset($postContent)) { if (empty($postContent)) { echo 'error';}} ?>" name="content" cols="20" rows="10"><?php echo $oldcontent ?></textarea><br>
-	<input type="submit" name="submit" class="submit" value="Sauvegarder"/>
+	<input type="submit" name="submit" class="submit" value="Save"/>
 </form>
 </div>
 <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
@@ -46,7 +46,7 @@
 	var converter = new Markdown.Converter();
 
 	var editor = new Markdown.Editor(converter);
-
+	
 	editor.run();
 })();
 </script>
