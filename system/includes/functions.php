@@ -1562,15 +1562,15 @@ function toolbar() {
 	<link href="{$base}themes/default/css/toolbar.css" rel="stylesheet" />
 EOF;
 	echo '<div id="toolbar"><ul>';
-	echo '<li><a href="'.$base.'admin">Admin</a></li>';
-	if ($role === 'admin') {echo '<li><a href="'.$base.'admin/posts">Posts</a></li>';}
-	echo '<li><a href="'.$base.'admin/mine">Mine</a></li>';
-	echo '<li><a href="'.$base.'add/post">Add post</a></li>';
-	echo '<li><a href="'.$base.'add/page">Add page</a></li>';
-	echo '<li><a href="'.$base.'edit/profile">Edit profile</a></li>';
-	echo '<li><a href="'.$base.'admin/import">Import</a></li>';
-	echo '<li><a href="'.$base.'admin/backup">Backup</a></li>';
-	echo '<li><a href="'.$base.'logout">Logout</a></li>';
+	echo '<li><a href="'.$base.'admin">| Admin</a></li>';
+	if ($role === 'admin') {echo '<li><a href="'.$base.'admin/posts">| Tous les billets</a></li>';}
+	echo '<li><a href="'.$base.'admin/mine">| Mes billets</a></li>';
+	echo '<li><a href="'.$base.'add/post">| Nouveau billet</a></li>';
+	echo '<li><a href="'.$base.'add/page">| Nouvelle page</a></li>';
+	echo '<li><a href="'.$base.'edit/profile">| Éditer mon profil</a></li>';
+	echo '<li><a href="'.$base.'admin/import">| Importer</a></li>';
+	echo '<li><a href="'.$base.'admin/backup">| Sauvegarde </a></li>';
+	echo '<li><a href="'.$base.'logout">| Déconnexion </a></li>';
 
 	echo '</ul></div>';
 }
