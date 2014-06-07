@@ -1568,7 +1568,7 @@ EOF;
 	echo '<li><a href="'.$base.'add/post">| Nouveau billet</a></li>';
 	echo '<li><a href="'.$base.'add/page">| Nouvelle page</a></li>';
 	echo '<li><a href="'.$base.'edit/profile">| Éditer mon profil</a></li>';
-	echo '<li><a href="'.$base.'admin/import">| Importer</a></li>';
+	echo '<li><a href="'.$base.'admin/import">| Importer un flux RSS</a></li>';
 	echo '<li><a href="'.$base.'admin/backup">| Sauvegarde </a></li>';
 	echo '<li><a href="'.$base.'logout">| Déconnexion </a></li>';
 
