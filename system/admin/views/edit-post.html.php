@@ -16,15 +16,15 @@
 		$oldtitle = 'Untitled';
 		$oldcontent = ltrim($arr[0]);
 	}
-	
+
 	$dir = substr($url, 0, strrpos($url, '/'));
-	
+
 	$oldurl = explode('_', $url);
-	
+
 	$oldtag = $oldurl[1];
-	
+
 	$oldmd = str_replace('.md','',$oldurl[2]);
-	
+
 	if(isset($_GET['destination'])) {
 		$destination = $_GET['destination'];
 	}
@@ -40,8 +40,8 @@
 	$postdate = strtotime($timestamp);
 	// The post URL
 	$delete= site_url().date('Y/m', $postdate).'/'.$oldmd . '/delete?destination=' . $destination;
-	
-	
+
+
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo site_url() ?>system/admin/editor/css/editor.css" />
 <script type="text/javascript" src="<?php echo site_url() ?>system/admin/editor/js/Markdown.Converter.js"></script>
@@ -52,15 +52,15 @@
  <?php } ?>
 <div class="wmd-panel">
 <form method="POST">
-	Title <span class="required">*</span> <br><input type="text" name="title" class="text <?php if (isset($postTitle)) { if (empty($postTitle)) { echo 'error';}} ?>" value="<?php echo $oldtitle?>"/><br><br>
+	Titre <span class="required">*</span> <br><input type="text" name="title" class="text <?php if (isset($postTitle)) { if (empty($postTitle)) { echo 'error';}} ?>" value="<?php echo $oldtitle?>"/><br><br>
 	Tag <span class="required">*</span> <br><input type="text" name="tag" class="text <?php if (isset($postTag)) { if (empty($postTag)) { echo 'error';}} ?>" value="<?php echo $oldtag?>"/><br><br>
-	Url (optional)<br><input type="text" name="url" class="text" value="<?php echo $oldmd ?>"/><br>
-	<span class="help">If the url leave empty we will use the post title.</span>
+	Url (optionnelle)<br><input type="text" name="url" class="text" value="<?php echo $oldmd ?>"/><br>
+	<span class="help">Si l'url reste vide, le titre du billet sera utilisé.</span>
 	<br><br>
 	<div id="wmd-button-bar" class="wmd-button-bar"></div>
 	<textarea id="wmd-input" class="wmd-input <?php if (isset($postContent)) { if (empty($postContent)) { echo 'error';}} ?>" name="content" cols="20" rows="10"><?php echo $oldcontent ?></textarea><br>
 	<input type="hidden" name="oldfile" class="text" value="<?php echo $url ?>"/>
-	<input type="submit" name="submit" class="submit" value="Save"/> <a href="<?php echo $delete?>">Delete</a>
+	<input type="submit" name="submit" class="submit" value="Sauvegarder"/> <a href="<?php echo $delete?>">Supprimer</a>
 </form>
 </div>
 <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
@@ -69,7 +69,7 @@
 	var converter = new Markdown.Converter();
 
 	var editor = new Markdown.Editor(converter);
-	
+
 	editor.run();
 })();
 </script>

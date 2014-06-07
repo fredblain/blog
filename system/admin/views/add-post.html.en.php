@@ -7,13 +7,14 @@
  <?php } ?>
 <div class="wmd-panel">
 	<form method="POST">
-		Titre <span class="required">*</span><br><input type="text" class="text <?php if (isset($postTitle)) { if (empty($postTitle)) { echo 'error';}} ?>" name="title" value="<?php if (isset($postTitle)) { echo $postTitle;} ?>"/><br><br>
-		Url (optionnelle)<br><input type="text" class="text" name="url" value="<?php if (isset($postUrl)) { echo $postUrl;} ?>"/><br>
-		<span class="help">Si l'url reste vide, le titre de la page sera utilisé.</span>
+		Title <span class="required">*</span> <br><input type="text" class="text <?php if (isset($postTitle)) { if (empty($postTitle)) { echo 'error';}} ?>" name="title" value="<?php if (isset($postTitle)) { echo $postTitle;} ?>"/><br><br>
+		Tag <span class="required">*</span> <br><input type="text" class="text <?php if (isset($postTag)) { if (empty($postTag)) { echo 'error';}} ?>" name="tag" value="<?php if (isset($postTag)) { echo $postTag;} ?>"/><br><br>
+		Url (optional)<br><input type="text" class="text" name="url" value="<?php if (isset($postUrl)) { echo $postUrl;} ?>"/><br>
+		<span class="help">If the url leave empty we will use the post title.</span>
 		<br><br>
 		<div id="wmd-button-bar" class="wmd-button-bar"></div>
 		<textarea id="wmd-input" class="wmd-input <?php if (isset($postContent)) { if (empty($postContent)) { echo 'error';}} ?>" name="content" cols="20" rows="10"><?php if (isset($postContent)) { echo $postContent;} ?></textarea><br/>
-		<input type="submit" name="submit" class="submit" value="Publier"/>
+		<input type="submit" name="submit" class="submit" value="Publish"/>
 	</form>
 </div>
 <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
@@ -22,7 +23,7 @@
 	var converter = new Markdown.Converter();
 
 	var editor = new Markdown.Editor(converter);
-
+	
 	editor.run();
 })();
 </script>

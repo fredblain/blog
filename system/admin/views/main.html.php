@@ -1,5 +1,5 @@
-<?php 
-echo '<h2>Your recent posts</h2>';
-get_recent_posts(); 
-echo '<h2>Static pages</h2>';
+<?php
+echo '<h2>Vos billets récents</h2>';
+get_recent_posts();
+echo '<h2>Pages statiques</h2>';
 get_recent_pages(); ?>

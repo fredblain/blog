@@ -1,1 +1,1 @@
-<h1>You don't have permission to access this page</h1>
+<h1>Vous n'avez la permission d'accéder à cette page.</h1>
