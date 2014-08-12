@@ -1,12 +1,12 @@
 <!--t Activer un Github hook pour IRC t-->
 
-Nous avons récemment mis en place au HAUM des Github hooks (ou services) sur nos principaux [dépôts Git][1], afin que les membres de l'association soient automatiquement notifiés sur [IRC][2] des évènements intéressants y survenant (push, pull-request, commentaires, autres).
+Nous avons récemment mis en place au [HAUM][1] des Github hooks (ou services) sur nos principaux [dépôts Git][2], afin que les membres de l'association soient automatiquement notifiés sur [IRC][3] des évènements intéressants y survenant (push, pull-request, commentaires, autres).
 
 #Comment ça fonctionne ?
 
-Lorsqu'un évènement survient sur un dépôt pour lequel un Github hook a été activé, un bot se connecte automatiquement au chan IRC renseigné dans son configuration pour y faire état de cet évènement. Le bot n'a ensuite plus qu'à se déconnecter jusqu'au prochain évènement. 
+Lorsqu'un évènement survient sur un dépôt pour lequel un Github hook a été activé, un bot se connecte automatiquement au chan IRC renseigné dans sa configuration pour y faire état de cet évènement. Le bot n'a ensuite plus qu'à se déconnecter jusqu'au prochain évènement. 
 
-Utilisons des exemples réels de notification pour illustrer concrètement ce billet :
+Prenons des cas réels de notification pour illustrer concrètement ce billet :
 
 Par exemple, un `push` sur le dépôt "website" du HAUM :
 
@@ -19,12 +19,12 @@ ou un commentaire  sur le dépôt "haum_internal" :
 
 "GitHub_Bot" étant ici le nickname IRC que nous avons donné au Github hook lorsque celui-ci se connecte au chan.
 
-Alors certains détracteurs pourraient dire que ce service fait doublons avec la notification par mail. À ceux-là je répondrai que :
+Alors certains détracteurs pourraient dire que ce service fait doublon avec la notification par mail. À ceux-là je répondrai que :
 
  1. c'est vrai ;
  2. mais l'un n'empêche pas l'autre ;
  3. et puis tous les membres de l'association n'utilisent pas GitHub ;
- 4. et entre les dépôts privés, professionnels, associatifs & co, certains d'entre nous ont choisis de désactiver les notifications mail, n'en recevant que trop déjà...
+ 4. et entre les dépôts privés, professionnels, associatifs & co, certains d'entre nous ont choisi de désactiver les notifications mail, n'en recevant que trop déjà...
  5. raison X ou Y ;
  6. ou encore simple envie de vouloir savoir comment ça marche ;)
 
@@ -38,7 +38,7 @@ De là, vous avez le choix :  soit vous créez un "webhook" ou alors vous ajoute
 
 Recherchez et ajoutez le service pour IRC. Vous devriez désormais être dans la page de configuration de celui-ci.
 Toutes les options permettant de le personnaliser y sont documentées.
-Personnellement, je vous conseille de cocher `"Message without join"` afin de ne pas être polluer par les annonces de (dé)connexion de votre bot, et de laisser décocher `"Long url"`. Cela activera le service [Git.io][3] qui est le raccourcisseur d'url de GitHub qui vous évitera une notification trop verbeuse.
+Personnellement, je vous conseille de cocher `"Message without join"` afin de ne pas être polluer par les annonces de (dé)connexion de votre bot, et de laisser décocher `"Long url"` : cela activera le service [Git.io][4] (le raccourcisseur d'url de GitHub) qui vous évitera une notification trop verbeuse.
 
 Il vous est alors proposé de diagnostiquer votre service afin de valider son bon fonctionnement, avec la commande :
 
@@ -50,9 +50,9 @@ Testons cette commande sur le dépôt "website" du HAUM. On obtient :
 
     [
           {
-            "url": "https://api.github.com/repos/haum/website/hooks/2296461",
-            "test_url": "https://api.github.com/repos/haum/website/hooks/2296461/test",
-            "id": 2296461,
+            "url": "https://api.github.com/repos/haum/website/hooks/1234567",
+            "test_url": "https://api.github.com/repos/haum/website/hooks/1234567/test",
+            "id": 1234567,
             "name": "irc",
             "active": true,
             "events": [
@@ -145,7 +145,7 @@ Et pour laquelle on obient :
         ],
     
 On remarque alors que seuls les `push`et les `pull-request`sont sujets à notification. Tout autre évènement n'est pas notifié.
-On utilise alors l'ID à sept chiffre vu précédemment pour  activer, respectivement désactiver, la notification d'un ou plusieurs évènements particuliers.
+On utilise alors l'ID à sept chiffre vu précédemment pour  activer/désactiver la notification d'un ou plusieurs évènements particuliers.
 
 Par exemple, si l'on souhaite ajouter la notification quant aux commentaires sur des commits et la revue de pull-requests, il nous suffit d'exécuter la commande suivante :
 
@@ -153,16 +153,17 @@ Par exemple, si l'on souhaite ajouter la notification quant aux commentaires sur
     https://api.github.com/repos/haum/website/hooks/1234567 \
     -d '{"events":["push", "pull_request", "commit_comment", "pull_request_review_comment"]}'
 
-Voyez, c'est pas très compliqué et pourtant c'est assez puissant ! Libre à vous maintenant de configurer votre hook GitHub pour IRC (ou tout autre service), en espérant que ce billet vous a donné les clés suffisantes pour y parvenir.
-
-À bientôt !
+Voyez, c'est pas très compliqué et pourtant c'est assez puissant ! Libre à vous maintenant de configurer votre hook pour IRC (ou tout autre service), en espérant que ce billet vous ait donné les clés suffisantes pour y parvenir.
+Autrement, vous pouvez également jeter un oeil à l'[API documentée][5] de GitHub.
 
 ----------
-Merci à [Pascal Chevrel][5] pour le pointeur vers l'article de [Rob Allen][4], dont ce billet s'inspire.
+*Merci à [Pascal Chevrel][6] pour le pointeur vers l'article de [Rob Allen][7], dont ce billet s'inspire.*
 
 
-  [1]: https://github.com/haum
-  [2]: http://irc.lc/freenode/haum/
-  [3]: http://git.io
-  [4]: http://akrabat.com/computing/changing-the-github-irc-hooks-notification-events/
-  [5]: http://www.chevrel.org/
+  [1]: http://haum.org/
+  [2]: https://github.com/haum
+  [3]: http://irc.lc/freenode/haum/
+  [4]: http://git.io
+  [5]: https://developer.github.com/webhooks
+  [6]: http://www.chevrel.org/
+  [7]: http://akrabat.com/computing/changing-the-github-irc-hooks-notification-events/
